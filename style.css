@@ -1,0 +1,1052 @@
+/* ========================================
+   صُحبة القرآن | التنسيق العام للموقع
+======================================== */
+
+:root {
+    --green: #075b46;
+    --dark-green: #063d32;
+    --light-green: #eaf3ed;
+    --gold: #c6a45b;
+    --cream: #faf8f1;
+    --text: #243b32;
+    --muted: #53665b;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    direction: rtl;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.8;
+    min-height: 100vh;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ========================================
+   رأس الموقع واللوجو
+======================================== */
+
+.site-header {
+    width: 100%;
+    min-height: 90px;
+    padding: 15px 5%;
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid #e8dfc9;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--green);
+    font-size: 22px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+}
+
+/* ========================================
+   قائمة التنقل
+======================================== */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    background: var(--light-green);
+    color: var(--green);
+}
+
+/* ========================================
+   الصفحة الرئيسية
+======================================== */
+
+.hero {
+    min-height: 590px;
+    padding: 65px 7%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(198, 164, 91, 0.18),
+            transparent 35%
+        ),
+        linear-gradient(135deg, #f9f7ef, #e5f0e8);
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 800px;
+}
+
+.welcome {
+    color: var(--green);
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    color: var(--dark-green);
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    color: #b28b3c;
+}
+
+.hero-description {
+    max-width: 650px;
+    margin: 0 auto 28px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 2;
+}
+
+/* أزرار الموقع */
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.main-button,
+.secondary-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 190px;
+    min-height: 50px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.main-button {
+    background: var(--green);
+    color: var(--white);
+    border: 2px solid var(--green);
+}
+
+.main-button:hover {
+    background: var(--dark-green);
+    transform: translateY(-2px);
+}
+
+.secondary-button {
+    color: var(--green);
+    background: var(--white);
+    border: 2px solid var(--gold);
+}
+
+.secondary-button:hover {
+    background: #f4eddb;
+    transform: translateY(-2px);
+}
+
+/* بطاقة الآية */
+
+.verse-card {
+    width: 100%;
+    max-width: 760px;
+    padding: 25px 30px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #dfc991;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(7, 91, 70, 0.07);
+}
+
+.verse-decoration {
+    color: var(--gold);
+    font-size: 28px;
+}
+
+.quran-verse {
+    color: var(--green);
+    font-size: clamp(19px, 3vw, 27px);
+    font-weight: bold;
+    line-height: 2;
+    margin: 8px 0;
+}
+
+.verse-reference {
+    color: #88713c;
+    font-size: 14px;
+}
+
+/* ========================================
+   صفحة عن صُحبة القرآن
+======================================== */
+
+/* مقدمة الصفحة */
+
+.about-page {
+    width: 100%;
+    background: var(--cream);
+    color: var(--text);
+    overflow: hidden;
+}
+
+.about-hero {
+    width: 100%;
+    padding: 55px 24px 45px;
+    text-align: center;
+    background: linear-gradient(145deg, #eaf3ed, #faf8f1);
+    border-bottom: 1px solid #e8dfc9;
+}
+
+.about-label {
+    color: #9b7b36;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.about-hero h1 {
+    color: var(--green);
+    font-size: clamp(30px, 4vw, 43px);
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+.about-hero h1 span {
+    color: #b28b3c;
+}
+
+.about-intro {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 2;
+}
+
+.about-decoration {
+    color: var(--gold);
+    font-size: 30px;
+    margin-top: 12px;
+}
+
+/* بطاقات التعريف والرسالة والغاية */
+
+.about-content {
+    width: calc(100% - 40px);
+    max-width: 960px;
+    margin: 42px auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+.about-card {
+    width: 100%;
+    min-width: 0;
+    padding: 26px;
+    background: var(--white);
+    border: 1px solid #e8dfc9;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(7, 91, 70, 0.06);
+
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    align-content: start;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 12px;
+
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.about-icon {
+    grid-column: 1;
+    grid-row: 1;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--light-green);
+    border-radius: 12px;
+    font-size: 23px;
+    margin: 0;
+}
+
+.about-card h2 {
+    grid-column: 2;
+    grid-row: 1;
+    color: var(--green);
+    font-size: 21px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.about-card p {
+    grid-column: 1 / -1;
+    width: 100%;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 2.1;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/* بطاقة الغاية */
+
+.goal-card {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #ffffff, #f0f5ee);
+    border-top: 3px solid var(--gold);
+}
+
+.goal-card p {
+    font-size: 16px;
+}
+
+/* الدعوة لبدء الرحلة */
+
+.about-cta {
+    width: 100%;
+    padding: 42px 20px 55px;
+    text-align: center;
+    background: #edf4ee;
+}
+
+.about-cta h2 {
+    color: var(--dark-green);
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.about-cta > p {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto 22px;
+    color: var(--muted);
+    line-height: 2;
+}
+
+/* ========================================
+   الفوتر
+======================================== */
+
+.site-footer {
+    width: 100%;
+    padding: 25px 5%;
+    text-align: center;
+    background: var(--dark-green);
+    color: var(--white);
+}
+
+.site-footer span {
+    display: block;
+    color: #e7d8ad;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.copyright {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #d7e5dc;
+}
+
+/* ========================================
+   تنسيق الشاشات المتوسطة
+======================================== */
+
+@media (max-width: 900px) {
+    .site-header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .navbar {
+        width: 100%;
+        gap: 5px;
+    }
+
+    .navbar a {
+        padding: 7px 9px;
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 45px 5%;
+    }
+}
+
+/* ========================================
+   تنسيق الموبايل
+======================================== */
+
+@media (max-width: 650px) {
+    .site-header {
+        padding: 15px 10px;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .navbar {
+        gap: 5px;
+    }
+
+    .navbar a {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .hero {
+        padding: 35px 18px;
+        gap: 28px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-button,
+    .secondary-button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .verse-card {
+        padding: 20px 15px;
+    }
+
+    /* صفحة عن الموقع */
+
+    .about-hero {
+        padding: 38px 18px;
+    }
+
+    .about-intro {
+        font-size: 16px;
+    }
+
+    .about-content {
+        width: calc(100% - 28px);
+        margin: 26px auto;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .about-card {
+        padding: 22px 18px;
+    }
+
+    .goal-card {
+        grid-column: auto;
+    }
+
+    .about-cta {
+        padding: 32px 16px 42px;
+    }
+}
+
+/* توحيد لون عنوان صفحة عن الموقع */
+
+.about-hero h1,
+.about-hero h1 span {
+    color: #075b46;
+}
+
+/* =========================================
+   تصميم صفحة المحفّظين - مطابق للصورة المرجعية
+========================================= */
+
+.teachers-page {
+    --tp-green: #075b4d;
+    --tp-dark: #06483d;
+    --tp-cream: #faf7ef;
+    --tp-gold: #b99a60;
+    --tp-text: #587572;
+    width: 100%;
+    overflow: hidden;
+    background: var(--tp-cream);
+    color: var(--tp-text);
+}
+
+/* المقدمة والخلفية */
+
+.teachers-hero {
+    min-height: 250px;
+    padding: 32px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background-color: #f3f1e5;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(250, 247, 239, 0.05),
+            rgba(250, 247, 239, 0.72) 27%,
+            rgba(250, 247, 239, 0.91) 50%,
+            rgba(250, 247, 239, 0.72) 76%,
+            rgba(250, 247, 239, 0.05)
+        ),
+        url("Quran.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #e5dcc7;
+}
+
+.teachers-hero-content {
+    width: 100%;
+    max-width: 720px;
+    position: relative;
+    z-index: 1;
+}
+
+.teachers-label {
+    color: #a88a50;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.teachers-hero h1 {
+    color: var(--tp-green);
+    font-size: clamp(30px, 3.5vw, 40px);
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.teachers-hero-content > p:not(.teachers-label) {
+    color: #547571;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.teachers-ornament {
+    margin: 13px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--tp-gold);
+}
+
+.teachers-ornament span {
+    width: 92px;
+    height: 1px;
+    background: var(--tp-gold);
+}
+
+.teachers-ornament b {
+    font-size: 26px;
+    font-weight: normal;
+}
+
+/* منطقة البطاقات */
+
+.teachers-section {
+    width: 80%;
+    max-width: 1230px;
+    margin: 20px auto 18px;
+}
+
+.teachers-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.teachers-heading h2 {
+    color: var(--tp-green);
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.teachers-heading p {
+    color: var(--tp-text);
+    font-size: 13px;
+}
+
+/* عمودان، وبطاقتان في كل صف */
+
+.teachers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+
+/* الكارت */
+
+.teacher-card {
+    min-width: 0;
+    min-height: 270px;
+    padding: 19px 25px 14px;
+    background: rgba(255, 255, 255, 0.44);
+    border: 1px solid #e6dbc4;
+    border-radius: 13px;
+    box-shadow: 0 2px 5px rgba(90, 73, 37, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s ease;
+}
+
+.teacher-card:hover {
+    box-shadow: 0 6px 16px rgba(7, 91, 77, 0.09);
+}
+
+/* صورة المحفّظ والاسم */
+
+.teacher-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 8px;
+}
+
+.teacher-photo {
+    width: 92px;
+    height: 92px;
+    min-width: 92px;
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    background: #deded9;
+    border: 0;
+    display: block;
+}
+
+.teacher-info {
+    flex: 1;
+    min-width: 0;
+    text-align: right;
+    padding-top: 0;
+}
+
+.teacher-info h3 {
+    color: var(--tp-green);
+    font-size: clamp(17px, 1.7vw, 22px);
+    line-height: 1.6;
+    margin: 0 0 7px;
+}
+
+.teacher-tag {
+    display: inline-block;
+    background: #dce8d9;
+    color: #52786c;
+    padding: 3px 12px;
+    border-radius: 18px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.7;
+}
+
+/* وصف المحفّظ */
+
+.teacher-description {
+    color: #69817e;
+    font-size: 13px;
+    line-height: 1.9;
+    margin: 0 0 10px;
+    min-height: 42px;
+}
+
+/* قائمة المميزات */
+
+.teacher-details {
+    list-style: none;
+    border-top: 1px solid #e6e1d6;
+    padding: 9px 0 0;
+    margin: 0 0 12px;
+}
+
+.teacher-details li {
+    position: relative;
+    padding-right: 22px;
+    margin-bottom: 3px;
+    color: #69817e;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.teacher-details li::before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--tp-green);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* زر التواصل */
+
+.teacher-button {
+    width: 64%;
+    max-width: 270px;
+    min-height: 40px;
+    margin: auto auto 0;
+    padding: 7px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 22px;
+    background: #08705b;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.teacher-button:hover {
+    background: #06483d;
+}
+
+.whatsapp-symbol {
+    font-size: 17px;
+    line-height: 1;
+}
+
+/* الملاحظة الذهبية */
+
+.teachers-note {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 16px;
+    padding: 9px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f4ecd7;
+    border: 1px solid #eee3c9;
+    border-radius: 12px;
+    color: #aa9365;
+}
+
+.teachers-note p {
+    flex: 1;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+.note-leaf {
+    font-size: 29px;
+    color: #b8b99d;
+}
+
+.note-info {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #b49a61;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* منطقة تقديم الطلب */
+
+.teachers-cta {
+    min-height: 120px;
+    padding: 15px 20px 17px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background-color: #e9f0e6;
+}
+
+.teachers-cta h2 {
+    color: var(--tp-green);
+    font-size: 21px;
+    margin-bottom: 3px;
+}
+
+.teachers-cta p {
+    max-width: 650px;
+    margin: 0 auto 10px;
+    color: #66817a;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.enrollment-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    min-width: 220px;
+    min-height: 39px;
+    padding: 7px 20px;
+    background: #08705b;
+    color: white;
+    text-decoration: none;
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.enrollment-button:hover {
+    background: var(--tp-dark);
+}
+
+.cta-leaves {
+    position: absolute;
+    bottom: -27px;
+    color: #c0cdbb;
+    font-size: 100px;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.cta-leaves-right {
+    right: -7px;
+}
+
+.cta-leaves-left {
+    left: -7px;
+    transform: scaleX(-1);
+}
+
+/* الفوتر */
+
+.site-footer {
+    width: 100%;
+    min-height: 75px;
+    padding: 10px 4%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 10px;
+    background: #075347;
+    color: white;
+    text-align: center;
+}
+
+.footer-side {
+    font-size: 11px;
+    color: #d7e4d9;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-brand strong {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.footer-brand span {
+    color: #d7e4d9;
+    font-size: 11px;
+}
+
+/* =========================================
+   الشاشات المتوسطة
+========================================= */
+
+@media (max-width: 900px) {
+    .teachers-section {
+        width: 90%;
+    }
+
+    .teacher-card {
+        padding: 17px;
+    }
+
+    .teacher-photo {
+        width: 75px;
+        height: 75px;
+        min-width: 75px;
+    }
+
+    .teacher-button {
+        width: 82%;
+    }
+
+    .site-header {
+        justify-content: center;
+    }
+
+    .navbar {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   الموبايل
+========================================= */
+
+@media (max-width: 600px) {
+    .teachers-hero {
+        min-height: 235px;
+        padding: 30px 16px;
+    }
+
+    .teachers-hero h1 {
+        font-size: 29px;
+    }
+
+    .teachers-hero-content > p:not(.teachers-label) {
+        font-size: 13px;
+    }
+
+    .teachers-ornament span {
+        width: 55px;
+    }
+
+    .teachers-section {
+        width: calc(100% - 24px);
+        margin: 20px auto;
+    }
+
+    .teachers-heading h2 {
+        font-size: 22px;
+    }
+
+    .teachers-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 13px;
+    }
+
+    .teacher-card {
+        min-height: 260px;
+        padding: 18px;
+    }
+
+    .teacher-photo {
+        width: 76px;
+        height: 76px;
+        min-width: 76px;
+    }
+
+    .teacher-info h3 {
+        font-size: 18px;
+    }
+
+    .teacher-button {
+        width: 75%;
+    }
+
+    .teachers-note {
+        padding: 10px;
+        gap: 7px;
+    }
+
+    .teachers-note p {
+        font-size: 10px;
+    }
+
+    .note-leaf {
+        font-size: 22px;
+    }
+
+    .cta-leaves {
+        font-size: 65px;
+    }
+
+    .site-footer {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        padding: 15px 10px;
+    }
+
+    .footer-empty {
+        display: none;
+    }
+
+    .navbar a {
+        font-size: 11px;
+        padding: 6px 7px;
+    }
+}
