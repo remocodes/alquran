@@ -11,6 +11,19 @@
     --text: #243b32;
     --muted: #53665b;
     --white: #ffffff;
+
+    /* متغيرات صفحة الالتحاق */
+    --primary-color: #0b594b;
+    --primary-light: #147a67;
+    --accent-gold: #c5a059;
+    --bg-page: #f9f8f3;
+    --bg-card: #f4f3ec;
+    --text-dark: #2c3e35;
+    --text-muted: #6b7c74;
+    --border-color: #e2dfd5;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 * {
@@ -116,7 +129,6 @@ a {
     justify-content: center;
     gap: 40px;
     text-align: center;
-
     background:
         radial-gradient(
             circle at top left,
@@ -157,7 +169,7 @@ a {
     line-height: 2;
 }
 
-/* أزرار الموقع */
+/* أزرار الصفحة الرئيسية */
 
 .hero-buttons {
     display: flex;
@@ -239,8 +251,6 @@ a {
    صفحة عن صُحبة القرآن
 ======================================== */
 
-/* مقدمة الصفحة */
-
 .about-page {
     width: 100%;
     background: var(--cream);
@@ -289,8 +299,6 @@ a {
     margin-top: 12px;
 }
 
-/* بطاقات التعريف والرسالة والغاية */
-
 .about-content {
     width: calc(100% - 40px);
     max-width: 960px;
@@ -309,14 +317,12 @@ a {
     border: 1px solid #e8dfc9;
     border-radius: 16px;
     box-shadow: 0 5px 18px rgba(7, 91, 70, 0.06);
-
     display: grid;
     grid-template-columns: 42px minmax(0, 1fr);
     align-content: start;
     align-items: center;
     column-gap: 12px;
     row-gap: 12px;
-
     text-align: right;
     overflow-wrap: anywhere;
 }
@@ -354,8 +360,6 @@ a {
     overflow-wrap: anywhere;
 }
 
-/* بطاقة الغاية */
-
 .goal-card {
     grid-column: 1 / -1;
     background: linear-gradient(135deg, #ffffff, #f0f5ee);
@@ -365,8 +369,6 @@ a {
 .goal-card p {
     font-size: 16px;
 }
-
-/* الدعوة لبدء الرحلة */
 
 .about-cta {
     width: 100%;
@@ -390,33 +392,860 @@ a {
     line-height: 2;
 }
 
+/* الحفاظ على لون عنوان صفحة عن الموقع */
+
+.about-hero h1,
+.about-hero h1 span {
+    color: #075b46;
+}
+
 /* ========================================
-   الفوتر
+   الفوتر العام لجميع الصفحات
 ======================================== */
+
+footer:not(.site-footer) {
+    width: 100%;
+    box-sizing: border-box;
+    background: #075347;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 25px;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+footer:not(.site-footer) .logo-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+footer:not(.site-footer) p {
+    margin: 0 auto 8px;
+    color: #d7e4d9;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+footer:not(.site-footer) .copyright {
+    margin-top: 5px;
+    color: #d7e5dc;
+    font-size: 11px;
+}
+
+/* الفوتر الموحد الذي يستخدم site-footer */
 
 .site-footer {
     width: 100%;
-    padding: 25px 5%;
+    min-height: 62px;
+    padding: 8px 4%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 8px;
+    background: #075347;
+    color: white;
     text-align: center;
-    background: var(--dark-green);
-    color: var(--white);
 }
 
-.site-footer span {
-    display: block;
-    color: #e7d8ad;
-    font-size: 14px;
-    margin-top: 5px;
+.footer-side {
+    font-size: 10px;
+    line-height: 1.7;
+    color: #d7e4d9;
 }
 
-.copyright {
-    margin-top: 15px;
-    font-size: 12px;
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.6;
+}
+
+.footer-brand strong {
+    color: white;
+    font-size: 13px;
+    margin-bottom: 1px;
+}
+
+.footer-brand span {
+    color: #d7e4d9;
+    font-size: 10px;
+    margin-top: 0;
+}
+
+.site-footer .copyright {
+    margin-top: 3px;
+    font-size: 10px;
     color: #d7e5dc;
 }
 
 /* ========================================
-   تنسيق الشاشات المتوسطة
+   صفحة المحفّظين
+======================================== */
+
+.teachers-page {
+    --tp-green: #075b4d;
+    --tp-dark: #06483d;
+    --tp-cream: #faf7ef;
+    --tp-gold: #b99a60;
+    --tp-text: #587572;
+    width: 100%;
+    overflow: hidden;
+    background: var(--tp-cream);
+    color: var(--tp-text);
+}
+
+/* مقدمة صفحة المحفّظين */
+
+.teachers-hero {
+    min-height: 250px;
+    padding: 32px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background-color: #f3f1e5;
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(250, 247, 239, 0.05),
+            rgba(250, 247, 239, 0.72) 27%,
+            rgba(250, 247, 239, 0.91) 50%,
+            rgba(250, 247, 239, 0.72) 76%,
+            rgba(250, 247, 239, 0.05)
+        ),
+        url("Quran.jpeg");
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #e5dcc7;
+}
+
+.teachers-hero-content {
+    width: 100%;
+    max-width: 720px;
+    position: relative;
+    z-index: 1;
+}
+
+.teachers-label {
+    color: #a88a50;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.teachers-hero h1 {
+    color: var(--tp-green);
+    font-size: clamp(30px, 3.5vw, 40px);
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.teachers-hero-content > p:not(.teachers-label) {
+    color: #547571;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.teachers-ornament {
+    margin: 13px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--tp-gold);
+}
+
+.teachers-ornament span {
+    width: 92px;
+    height: 1px;
+    background: var(--tp-gold);
+}
+
+.teachers-ornament b {
+    font-size: 26px;
+    font-weight: normal;
+}
+
+/* منطقة بطاقات المحفّظين */
+
+.teachers-section {
+    width: 80%;
+    max-width: 1230px;
+    margin: 20px auto 18px;
+}
+
+.teachers-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.teachers-heading h2 {
+    color: var(--tp-green);
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.teachers-heading p {
+    color: var(--tp-text);
+    font-size: 13px;
+}
+
+.teachers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+
+.teacher-card {
+    min-width: 0;
+    min-height: 270px;
+    padding: 19px 25px 14px;
+    background: rgba(255, 255, 255, 0.44);
+    border: 1px solid #e6dbc4;
+    border-radius: 13px;
+    box-shadow: 0 2px 5px rgba(90, 73, 37, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s ease;
+}
+
+.teacher-card:hover {
+    box-shadow: 0 6px 16px rgba(7, 91, 77, 0.09);
+}
+
+.teacher-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 8px;
+}
+
+.teacher-photo {
+    width: 92px;
+    height: 92px;
+    min-width: 92px;
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    background: #deded9;
+    border: 0;
+    display: block;
+}
+
+.teacher-info {
+    flex: 1;
+    min-width: 0;
+    text-align: right;
+    padding-top: 0;
+}
+
+.teacher-info h3 {
+    color: var(--tp-green);
+    font-size: clamp(17px, 1.7vw, 22px);
+    line-height: 1.6;
+    margin: 0 0 7px;
+}
+
+.teacher-tag {
+    display: inline-block;
+    background: #dce8d9;
+    color: #52786c;
+    padding: 3px 12px;
+    border-radius: 18px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.7;
+}
+
+.teacher-description {
+    color: #69817e;
+    font-size: 13px;
+    line-height: 1.9;
+    margin: 0 0 10px;
+    min-height: 42px;
+}
+
+.teacher-details {
+    list-style: none;
+    border-top: 1px solid #e6e1d6;
+    padding: 9px 0 0;
+    margin: 0 0 12px;
+}
+
+.teacher-details li {
+    position: relative;
+    padding-right: 22px;
+    margin-bottom: 3px;
+    color: #69817e;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.teacher-details li::before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--tp-green);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* أزرار التواصل مع المحفّظين */
+
+.teacher-button {
+    width: 64%;
+    max-width: 270px;
+    min-height: 40px;
+    margin: auto auto 0;
+    padding: 7px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 22px;
+    background: #08705b;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.teacher-button:hover {
+    background: #06483d;
+}
+
+.whatsapp-symbol {
+    font-size: 17px;
+    line-height: 1;
+}
+
+/* الملاحظة الذهبية */
+
+.teachers-note {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 16px;
+    padding: 9px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f4ecd7;
+    border: 1px solid #eee3c9;
+    border-radius: 12px;
+    color: #aa9365;
+}
+
+.teachers-note p {
+    flex: 1;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+.note-leaf {
+    font-size: 29px;
+    color: #b8b99d;
+}
+
+.note-info {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #b49a61;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* منطقة تقديم طلب الالتحاق */
+
+.teachers-cta {
+    min-height: 120px;
+    padding: 15px 20px 17px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background-color: #e9f0e6;
+}
+
+.teachers-cta h2 {
+    color: var(--tp-green);
+    font-size: 21px;
+    margin-bottom: 3px;
+}
+
+.teachers-cta p {
+    max-width: 650px;
+    margin: 0 auto 10px;
+    color: #66817a;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.enrollment-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    min-width: 220px;
+    min-height: 39px;
+    padding: 7px 20px;
+    background: #08705b;
+    color: white;
+    text-decoration: none;
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.enrollment-button:hover {
+    background: var(--tp-dark);
+}
+
+.cta-leaves {
+    position: absolute;
+    bottom: -27px;
+    color: #c0cdbb;
+    font-size: 100px;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.cta-leaves-right {
+    right: -7px;
+}
+
+.cta-leaves-left {
+    left: -7px;
+    transform: scaleX(-1);
+}
+
+/* ========================================
+   صفحة الالتحاق
+======================================== */
+
+/* صورة الهيدر */
+
+.request-page .hero {
+    min-height: auto;
+    padding: 50px 20px;
+    display: block;
+    position: relative;
+    text-align: center;
+    background-image: url("Quran.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    gap: 0;
+}
+
+.request-page .hero-subtitle {
+    color: var(--accent-gold);
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.request-page .hero h1 {
+    color: var(--primary-color);
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.request-page .hero p {
+    color: var(--text-muted);
+    max-width: 550px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.request-page .divider-icon {
+    color: var(--accent-gold);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.request-page .divider-icon::before,
+.request-page .divider-icon::after {
+    content: "";
+    width: 80px;
+    height: 1px;
+    background: var(--accent-gold);
+}
+
+/* المحتوى الرئيسي */
+
+.request-page .container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 25px;
+}
+
+/* أقسام النموذج */
+
+.request-page .form-section {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.request-page .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.request-page .step-badge {
+    background: #e2ede8;
+    color: var(--primary-color);
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.request-page .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.request-page .section-desc {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+
+.request-page .form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.request-page .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.request-page .form-group.no-margin {
+    margin-bottom: 0;
+}
+
+.request-page label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.request-page label span.req {
+    color: #d9534f;
+}
+
+/* الحقول */
+
+.request-page input[type="text"],
+.request-page input[type="number"],
+.request-page input[type="tel"],
+.request-page input[type="email"],
+.request-page select,
+.request-page textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s, background-color 0.3s;
+}
+
+.request-page textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.request-page input:focus,
+.request-page select:focus,
+.request-page textarea:focus {
+    border-color: var(--primary-color);
+    background-color: #fff;
+}
+
+/* اختيارات الراديو */
+
+.request-page .radio-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    min-height: 42px;
+}
+
+.request-page .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* بطاقات الاختيارات */
+
+.request-page .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.request-page .choice-card {
+    border: 1px solid var(--border-color);
+    background: var(--bg-page);
+    border-radius: var(--radius-md);
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.request-page .choice-card:hover,
+.request-page .choice-card.selected {
+    border-color: var(--primary-color);
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(11, 89, 75, 0.08);
+}
+
+.request-page .choice-card.selected::after {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 10px;
+    color: #fff;
+    background: var(--primary-color);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.request-page .choice-card i {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.request-page .choice-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* طرق التواصل */
+
+.request-page .methods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.request-page .method-card {
+    border: 1px solid var(--border-color);
+    background: var(--bg-page);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.request-page .method-card:hover,
+.request-page .method-card.selected {
+    border-color: var(--primary-color);
+    background: #fff;
+    color: var(--primary-color);
+}
+
+.request-page .method-card i {
+    font-size: 18px;
+}
+
+/* زر إرسال الطلب */
+
+.request-page .btn-submit {
+    width: 100%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.request-page .btn-submit:hover {
+    background: var(--primary-light);
+}
+
+/* العمود الجانبي */
+
+.request-page .sidebar-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.request-page .sidebar-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.request-page .features-list {
+    list-style: none;
+}
+
+.request-page .features-list li {
+    font-size: 13px;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.request-page .features-list li i {
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+/* صندوق الواتساب */
+
+.request-page .whatsapp-box {
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+}
+
+.request-page .whatsapp-box:hover {
+    transform: translateY(-2px);
+}
+
+.request-page .whatsapp-box-text {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.request-page .whatsapp-box i {
+    font-size: 20px;
+}
+
+.request-page .whatsapp-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* بطاقة الاقتباس */
+
+.request-page .quote-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 25px 18px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.request-page .quote-title {
+    font-family: "Amiri", serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* ========================================
+   الشاشات المتوسطة
 ======================================== */
 
 @media (max-width: 900px) {
@@ -437,6 +1266,28 @@ a {
 
     .hero {
         padding: 45px 5%;
+    }
+
+    .teachers-section {
+        width: 90%;
+    }
+
+    .teacher-card {
+        padding: 17px;
+    }
+
+    .teacher-photo {
+        width: 75px;
+        height: 75px;
+        min-width: 75px;
+    }
+
+    .teacher-button {
+        width: 82%;
+    }
+
+    .request-page .container {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -520,454 +1371,40 @@ a {
     .about-cta {
         padding: 32px 16px 42px;
     }
-}
 
-/* توحيد لون عنوان صفحة عن الموقع */
+    /* الفوتر الموحد على الموبايل */
 
-.about-hero h1,
-.about-hero h1 span {
-    color: #075b46;
-}
-
-/* =========================================
-   تصميم صفحة المحفّظين - مطابق للصورة المرجعية
-========================================= */
-
-.teachers-page {
-    --tp-green: #075b4d;
-    --tp-dark: #06483d;
-    --tp-cream: #faf7ef;
-    --tp-gold: #b99a60;
-    --tp-text: #587572;
-    width: 100%;
-    overflow: hidden;
-    background: var(--tp-cream);
-    color: var(--tp-text);
-}
-
-/* المقدمة والخلفية */
-
-.teachers-hero {
-    min-height: 250px;
-    padding: 32px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    background-color: #f3f1e5;
-
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(250, 247, 239, 0.05),
-            rgba(250, 247, 239, 0.72) 27%,
-            rgba(250, 247, 239, 0.91) 50%,
-            rgba(250, 247, 239, 0.72) 76%,
-            rgba(250, 247, 239, 0.05)
-        ),
-        url("Quran.jpeg");
-
-    background-size: cover;
-    background-position: center;
-    border-bottom: 1px solid #e5dcc7;
-}
-
-.teachers-hero-content {
-    width: 100%;
-    max-width: 720px;
-    position: relative;
-    z-index: 1;
-}
-
-.teachers-label {
-    color: #a88a50;
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.teachers-hero h1 {
-    color: var(--tp-green);
-    font-size: clamp(30px, 3.5vw, 40px);
-    line-height: 1.5;
-    margin-bottom: 14px;
-}
-
-.teachers-hero-content > p:not(.teachers-label) {
-    color: #547571;
-    font-size: 15px;
-    line-height: 2;
-}
-
-.teachers-ornament {
-    margin: 13px auto 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    color: var(--tp-gold);
-}
-
-.teachers-ornament span {
-    width: 92px;
-    height: 1px;
-    background: var(--tp-gold);
-}
-
-.teachers-ornament b {
-    font-size: 26px;
-    font-weight: normal;
-}
-
-/* منطقة البطاقات */
-
-.teachers-section {
-    width: 80%;
-    max-width: 1230px;
-    margin: 20px auto 18px;
-}
-
-.teachers-heading {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.teachers-heading h2 {
-    color: var(--tp-green);
-    font-size: 24px;
-    margin-bottom: 4px;
-}
-
-.teachers-heading p {
-    color: var(--tp-text);
-    font-size: 13px;
-}
-
-/* عمودان، وبطاقتان في كل صف */
-
-.teachers-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-    align-items: stretch;
-}
-
-/* الكارت */
-
-.teacher-card {
-    min-width: 0;
-    min-height: 270px;
-    padding: 19px 25px 14px;
-    background: rgba(255, 255, 255, 0.44);
-    border: 1px solid #e6dbc4;
-    border-radius: 13px;
-    box-shadow: 0 2px 5px rgba(90, 73, 37, 0.05);
-    display: flex;
-    flex-direction: column;
-    transition: box-shadow 0.25s ease;
-}
-
-.teacher-card:hover {
-    box-shadow: 0 6px 16px rgba(7, 91, 77, 0.09);
-}
-
-/* صورة المحفّظ والاسم */
-
-.teacher-profile {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 15px;
-    margin-bottom: 8px;
-}
-
-.teacher-photo {
-    width: 92px;
-    height: 92px;
-    min-width: 92px;
-    flex-shrink: 0;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-    background: #deded9;
-    border: 0;
-    display: block;
-}
-
-.teacher-info {
-    flex: 1;
-    min-width: 0;
-    text-align: right;
-    padding-top: 0;
-}
-
-.teacher-info h3 {
-    color: var(--tp-green);
-    font-size: clamp(17px, 1.7vw, 22px);
-    line-height: 1.6;
-    margin: 0 0 7px;
-}
-
-.teacher-tag {
-    display: inline-block;
-    background: #dce8d9;
-    color: #52786c;
-    padding: 3px 12px;
-    border-radius: 18px;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 1.7;
-}
-
-/* وصف المحفّظ */
-
-.teacher-description {
-    color: #69817e;
-    font-size: 13px;
-    line-height: 1.9;
-    margin: 0 0 10px;
-    min-height: 42px;
-}
-
-/* قائمة المميزات */
-
-.teacher-details {
-    list-style: none;
-    border-top: 1px solid #e6e1d6;
-    padding: 9px 0 0;
-    margin: 0 0 12px;
-}
-
-.teacher-details li {
-    position: relative;
-    padding-right: 22px;
-    margin-bottom: 3px;
-    color: #69817e;
-    font-size: 13px;
-    line-height: 1.8;
-}
-
-.teacher-details li::before {
-    content: "✓";
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: var(--tp-green);
-    font-size: 17px;
-    font-weight: bold;
-}
-
-/* زر التواصل */
-
-.teacher-button {
-    width: 64%;
-    max-width: 270px;
-    min-height: 40px;
-    margin: auto auto 0;
-    padding: 7px 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 22px;
-    background: #08705b;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
-    transition: background 0.2s ease;
-}
-
-.teacher-button:hover {
-    background: #06483d;
-}
-
-.whatsapp-symbol {
-    font-size: 17px;
-    line-height: 1;
-}
-
-/* الملاحظة الذهبية */
-
-.teachers-note {
-    width: 100%;
-    min-height: 48px;
-    margin-top: 16px;
-    padding: 9px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #f4ecd7;
-    border: 1px solid #eee3c9;
-    border-radius: 12px;
-    color: #aa9365;
-}
-
-.teachers-note p {
-    flex: 1;
-    font-size: 11px;
-    line-height: 1.9;
-}
-
-.note-leaf {
-    font-size: 29px;
-    color: #b8b99d;
-}
-
-.note-info {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #b49a61;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-/* منطقة تقديم الطلب */
-
-.teachers-cta {
-    min-height: 120px;
-    padding: 15px 20px 17px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    background-color: #e9f0e6;
-}
-
-.teachers-cta h2 {
-    color: var(--tp-green);
-    font-size: 21px;
-    margin-bottom: 3px;
-}
-
-.teachers-cta p {
-    max-width: 650px;
-    margin: 0 auto 10px;
-    color: #66817a;
-    font-size: 12px;
-    line-height: 1.9;
-}
-
-.enrollment-button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 9px;
-    min-width: 220px;
-    min-height: 39px;
-    padding: 7px 20px;
-    background: #08705b;
-    color: white;
-    text-decoration: none;
-    border-radius: 24px;
-    font-size: 12px;
-    font-weight: bold;
-    transition: background 0.2s ease;
-}
-
-.enrollment-button:hover {
-    background: var(--tp-dark);
-}
-
-.cta-leaves {
-    position: absolute;
-    bottom: -27px;
-    color: #c0cdbb;
-    font-size: 100px;
-    opacity: 0.65;
-    pointer-events: none;
-}
-
-.cta-leaves-right {
-    right: -7px;
-}
-
-.cta-leaves-left {
-    left: -7px;
-    transform: scaleX(-1);
-}
-
-/* الفوتر */
-
-.site-footer {
-    width: 100%;
-    min-height: 75px;
-    padding: 10px 4%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    gap: 10px;
-    background: #075347;
-    color: white;
-    text-align: center;
-}
-
-.footer-side {
-    font-size: 11px;
-    color: #d7e4d9;
-}
-
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer-brand strong {
-    color: white;
-    font-size: 14px;
-    margin-bottom: 2px;
-}
-
-.footer-brand span {
-    color: #d7e4d9;
-    font-size: 11px;
-}
-
-/* =========================================
-   الشاشات المتوسطة
-========================================= */
-
-@media (max-width: 900px) {
-    .teachers-section {
-        width: 90%;
+    .site-footer {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 3px;
+        padding: 10px 8px;
     }
 
-    .teacher-card {
-        padding: 17px;
+    .footer-side {
+        font-size: 10px;
     }
 
-    .teacher-photo {
-        width: 75px;
-        height: 75px;
-        min-width: 75px;
+    .footer-brand strong {
+        font-size: 12px;
     }
 
-    .teacher-button {
-        width: 82%;
+    .footer-brand span {
+        font-size: 10px;
     }
 
-    .site-header {
-        justify-content: center;
+    .footer-empty {
+        display: none;
     }
 
-    .navbar {
-        width: 100%;
+    /* الفوتر القديم على الموبايل */
+
+    footer:not(.site-footer) {
+        padding: 12px 10px;
     }
-}
 
-/* =========================================
-   الموبايل
-========================================= */
+    /* صفحة المحفّظين */
 
-@media (max-width: 600px) {
     .teachers-hero {
         min-height: 235px;
         padding: 30px 16px;
@@ -1035,18 +1472,87 @@ a {
         font-size: 65px;
     }
 
-    .site-footer {
-        grid-template-columns: 1fr;
-        gap: 5px;
-        padding: 15px 10px;
-    }
-
-    .footer-empty {
-        display: none;
-    }
-
     .navbar a {
         font-size: 11px;
         padding: 6px 7px;
+    }
+
+    /* صفحة الالتحاق */
+
+    .request-page .hero {
+        padding: 35px 16px;
+    }
+
+    .request-page .hero h1 {
+        font-size: 29px;
+    }
+
+    .request-page .hero p {
+        font-size: 13px;
+    }
+
+    .request-page .container {
+        margin: 20px auto;
+        padding: 0 12px;
+        gap: 15px;
+    }
+
+    .request-page .form-section {
+        padding: 17px 14px;
+    }
+
+    .request-page .form-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .request-page .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .request-page .methods-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .request-page .section-desc {
+        margin-right: 0;
+    }
+
+    .request-page .sidebar-card {
+        padding: 16px;
+    }
+
+    .request-page .divider-icon::before,
+    .request-page .divider-icon::after {
+        width: 45px;
+    }
+}
+
+/* ========================================
+   شاشات الموبايل الصغيرة
+======================================== */
+
+@media (max-width: 380px) {
+    .request-page .form-section {
+        padding: 14px 11px;
+    }
+
+    .request-page .section-title {
+        font-size: 16px;
+    }
+
+    .request-page .radio-options {
+        gap: 8px;
+    }
+
+    .request-page .choice-card {
+        padding: 12px;
+    }
+
+    .teacher-profile {
+        gap: 10px;
+    }
+
+    .teacher-card {
+        padding: 14px;
     }
 }
