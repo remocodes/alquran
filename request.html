@@ -1,223 +1,277 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-        <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>طلب الالتحاق | صُحبة القرآن</title>
+  <link rel="stylesheet" href="request.css">
+    <link rel="stylesheet" href="style.css">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صحبة القرآن - طلب الالتحاق</title>
-    <!-- خطوط جوجل -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   
+
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body class="request-page">
+<body>
 
-    <!-- رأس الموقع -->
+    <!-- شريط التنقل -->
     <header class="site-header">
-
         <a href="index.html" class="logo">
             <img src="imeg2.jpeg" alt="شعار صُحبة القرآن">
             <span>صُحبة القرآن</span>
         </a>
 
-        <!-- قائمة التنقل -->
         <nav class="navbar">
-            <a href="index.html" >الرئيسية</a>
+            <a href="index.html">الرئيسية</a>
             <a href="about.html">عن الموقع</a>
-            <a href="teachers.html">المحفّظون</a>
+            <a href="teachers.html" >المحفّظون</a>
             <a href="request.html" class="active">طلب الالتحاق</a>
             <a href="contact.html">تواصل معنا</a>
         </nav>
-
     </header>
+  
+  <main class="page-container">
 
-    <!-- Hero Banner -->
-    <section class="hero">
-        <div class="hero-subtitle">
-            <i class="fa-solid fa-sparkles"></i>
-            خطوتك مع أهل القرآن
-            <i class="fa-solid fa-sparkles"></i>
-        </div>
-        <h1>طلب الالتحاق</h1>
-        <p>املأ بياناتك وحدد هدفك من الحفظ، وسنساعدك في الوصول إلى المحفظ المناسب لك بصحبة تعينك على الاستمرار.</p>
-        <div class="divider-icon">
-            <i class="fa-solid fa-dharmachakra"></i>
-        </div>
+    <section class="intro">
+      <span class="intro-badge">
+        <i class="fa-solid fa-leaf"></i>
+        رحلتك تبدأ بخطوة
+      </span>
+
+      <h1>ابدأ رحلتك مع <span>القرآن الكريم</span></h1>
+
+      <p>
+        املأ البيانات التالية وحدد تفضيلاتك، وسنتواصل معك
+        لنساعدك في اختيار ما يناسبك من برامج الحفظ والمراجعة.
+      </p>
+
+      <div class="verse">
+        ﴿أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ أَمْ عَلَى قُلُوبٍ أَقْفَالُهَا﴾
+     </div>
     </section>
 
-    <!-- Main Content Container -->
-    <div class="container">
-        
-        <!-- Form Left Section -->
-        <main>
-            <form id="enrollForm" onsubmit="sendToWhatsApp(event)">
-                
-                <!-- Section 1 -->
-                <div class="form-section">
-                    <div class="section-header">
-                        <span class="step-badge">1</span>
-                        <h3 class="section-title">بيانات الطالب</h3>
-                    </div>
-                    <p class="section-desc">أدخل بياناتك الشخصية بدقة لتسهيل عملية التواصل معك.</p>
+    <form id="requestForm">
 
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label>الاسم بالكامل <span class="req">*</span></label>
-                            <input type="text" id="fullname" placeholder="اكتب اسمك بالكامل" required>
-                        </div>
-                        <div class="form-group">
-                            <label>السن <span class="req">*</span></label>
-                            <input type="number" id="age" placeholder="أدخل عمرك" required>
-                        </div>
-                    </div>
+      <!-- بيانات الطالب -->
+      <section class="form-card">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">١</span>
+            <h2>بيانات الطالب</h2>
+          </div>
+          <span class="heading-note">معلوماتك الأساسية</span>
+        </div>
 
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label>رقم الهاتف أو واتساب <span class="req">*</span></label>
-                            <input type="text" id="phone" placeholder="01xxxxxxxxx" required>
-                        </div>
-                        <div class="form-group">
-                            <label>هل أنت مبتدئ أم حافظ أجزاء من القرآن؟ <span class="req">*</span></label>
-                            <div class="radio-options">
-                                <label class="radio-label">
-                                    <input type="radio" name="level" value="مبتدئ" checked> مبتدئ
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="level" value="حافظ أجزاء"> حافظ أجزاء
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+        <div class="fields-grid">
+          <div class="field">
+            <label for="studentName">الاسم بالكامل <span>*</span></label>
+            <input id="studentName" name="studentName" type="text"
+              placeholder="اكتب اسمك بالكامل" required>
+          </div>
 
-                    <div class="form-group no-margin">
-                        <label>مقدار الحفظ الحالي (إن وجد)</label>
-                        <input type="text" id="current_hifz" placeholder="مثال 5 أجزاء - سورة البقرة">
-                    </div>
-                </div>
+          <div class="field">
+            <label for="studentAge">السن <span>*</span></label>
+            <input id="studentAge" name="studentAge" type="number"
+              min="4" max="100" placeholder="أدخل عمرك" required>
+          </div>
 
-                <!-- Section 2 -->
-                <div class="form-section">
-                    <div class="section-header">
-                        <span class="step-badge">2</span>
-                        <h3 class="section-title">تحديد طلبك</h3>
-                    </div>
-                    <p class="section-desc">ما الذي تحتاجه من خلال المنصة؟</p>
+          <div class="field full-width">
+            <label for="studentPhone">رقم الموبايل أو الواتساب <span>*</span></label>
+            <input id="studentPhone" name="studentPhone" type="tel"
+              placeholder="01xxxxxxxxx" required>
+            <small>تأكد من كتابة رقم صحيح حتى نستطيع التواصل معك.</small>
+          </div>
+        </div>
 
-                    <div class="cards-grid">
-                        <div class="choice-card selected" onclick="selectCard(this, 'request_type', 'حفظ القرآن من بداية')">
-                            <i class="fa-solid fa-book-quran"></i>
-                            <h4>حفظ القرآن من البداية</h4>
-                        </div>
-                        <div class="choice-card" onclick="selectCard(this, 'request_type', 'استكمال الحفظ')">
-                            <i class="fa-solid fa-rotate-right"></i>
-                            <h4>استكمال الحفظ</h4>
-                        </div>
-                        <div class="choice-card" onclick="selectCard(this, 'request_type', 'مراجعة المحفوظ')">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                            <h4>مراجعة المحفوظ</h4>
-                        </div>
-                    </div>
-                    <input type="hidden" id="request_type" value="حفظ القرآن من بداية">
-                </div>
+        <div class="question-block">
+          <label class="question-label">ما نوع طلب الالتحاق؟ <span>*</span></label>
 
-                <!-- Section 3 -->
-                <div class="form-section">
-                    <div class="section-header">
-                        <span class="step-badge">3</span>
-                        <h3 class="section-title">الوقت المناسب للمتابعة</h3>
-                    </div>
-                    <p class="section-desc">اختر الأوقات والأيام التي تناسبك للمتابعة.</p>
+          <div class="choice-grid two-columns">
+            <label class="choice-card">
+              <input type="radio" name="requestType"
+                value="حفظ القرآن من البداية" required>
+              <span class="choice-icon"><i class="fa-solid fa-book-quran"></i></span>
+              <span class="choice-content">
+                <strong>مبتدئ</strong>
+                <small>أرغب في البدء بحفظ القرآن من البداية.</small>
+              </span>
+              <i class="fa-solid fa-circle-check selected-icon"></i>
+            </label>
 
-                    <div class="form-grid-2">
-                        <div class="form-group no-margin">
-                            <label>الأيام المناسبة <span class="req">*</span></label>
-                            <select id="days" required>
-                                <option value="" disabled selected>اختر الأيام</option>
-                                <option value="السبت والالثلاثاء">السبت والثلاثاء</option>
-                                <option value="الأحد والأربعاء">الأحد والأربعاء</option>
-                                <option value="الإثنين والخميس">الإثنين والخميس</option>
-                                <option value="نهاية الأسبوع (الجمعة والسبت)">نهاية الأسبوع (الجمعة والسبت)</option>
-                                <option value="يومياً">يومياً</option>
-                            </select>
-                        </div>
-                        <div class="form-group no-margin">
-                            <label>الأوقات المناسبة <span class="req">*</span></label>
-                            <select id="times" required>
-                                <option value="" disabled selected>اختر الأوقات</option>
-                                <option value="صباحاً (8 ص - 12 ظ)">صباحاً (8 ص - 12 ظ)</option>
-                                <option value="عصراً (4 ع - 7 م)">عصراً (4 ع - 7 م)</option>
-                                <option value="مساءً (8 م - 11 م)">مساءً (8 م - 11 م)</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+            <label class="choice-card">
+              <input type="radio" name="requestType"
+                value="استكمال حفظ القرآن">
+              <span class="choice-icon"><i class="fa-solid fa-book-open"></i></span>
+              <span class="choice-content">
+                <strong>لديّ حفظ سابق</strong>
+                <small>أرغب في استكمال ما حفظته من القرآن الكريم.</small>
+              </span>
+              <i class="fa-solid fa-circle-check selected-icon"></i>
+            </label>
+          </div>
+        </div>
+      </section>
 
-                <!-- Section 4 -->
-                <div class="form-section">
-                    <div class="section-header">
-                        <span class="step-badge">4</span>
-                        <h3 class="section-title">طريقة التسميع</h3>
-                    </div>
-                    <p class="section-desc">اختر طريقة التسميع المناسبة لك بالتسميع والمراجعة.</p>
+      <!-- أهداف الالتحاق -->
+      <section class="form-card">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">٢</span>
+            <h2>ما هدفك من الالتحاق؟</h2>
+          </div>
+          <span class="heading-note">اختر ما يناسبك</span>
+        </div>
 
-                    <div class="methods-grid">
-                        <div class="method-card selected" onclick="selectMethod(this, 'مكالمات صوتية (عبر زوم / جوجل ميت)')">
-                            <i class="fa-solid fa-microphone"></i>
-                            مكالمات صوتية (عبر زوم / جوجل ميت)
-                        </div>
-                        <div class="method-card" onclick="selectMethod(this, 'مكالمات فيديو (عبر زوم / جوجل ميت)')">
-                            <i class="fa-solid fa-video"></i>
-                            مكالمات فيديو (عبر زوم / جوجل ميت)
-                        </div>
-                    </div>
-                    <input type="hidden" id="method_type" value="مكالمات صوتية (عبر زوم / جوجل ميت)">
-                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 10px; text-align: center;">سيتم التنسيق مع المحفظ المناسب حسب تفضيلاتك.</p>
-                </div>
+        <div class="choice-grid three-columns">
+          <label class="choice-card goal-card">
+            <input type="checkbox" name="goals" value="حفظ القرآن من البداية">
+            <span class="choice-icon"><i class="fa-solid fa-book-quran"></i></span>
+            <span class="choice-content">
+              <strong>حفظ القرآن من البداية</strong>
+              <small>أرغب في البدء في رحلة حفظ كتاب الله.</small>
+            </span>
+            <i class="fa-solid fa-circle-check selected-icon"></i>
+          </label>
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn-submit">
-                    <i class="fa-regular fa-paper-plane"></i>
-                    إرسال طلب الالتحاق
-                </button>
+          <label class="choice-card goal-card">
+            <input type="checkbox" name="goals" value="استكمال الحفظ">
+            <span class="choice-icon"><i class="fa-solid fa-book-open"></i></span>
+            <span class="choice-content">
+              <strong>استكمال الحفظ</strong>
+              <small>أرغب في متابعة حفظ ما تبقى لي.</small>
+            </span>
+            <i class="fa-solid fa-circle-check selected-icon"></i>
+          </label>
 
-            </form>
-        </main>
+          <label class="choice-card goal-card">
+            <input type="checkbox" name="goals" value="مراجعة المحفوظ">
+            <span class="choice-icon"><i class="fa-solid fa-repeat"></i></span>
+            <span class="choice-content">
+              <strong>مراجعة المحفوظ</strong>
+              <small>أرغب في تثبيت ما سبق حفظه.</small>
+            </span>
+            <i class="fa-solid fa-circle-check selected-icon"></i>
+          </label>
+        </div>
+      </section>
 
-        <!-- Sidebar Right -->
-        <aside>
-            <div class="sidebar-card">
-                <h3 class="sidebar-title">
-                    لِمَاذَا تختار صُحبة القُرآن؟
-                </h3>
-                <ul class="features-list">
-                    <li><i class="fa-solid fa-leaf"></i> متابعة مستمرة مع محفظين متخصصين.</li>
-                    <li><i class="fa-solid fa-leaf"></i> تقييم دوري لمستواك وتطورك.</li>
-                    <li><i class="fa-solid fa-leaf"></i> بيئة آمنة ومنظمة للحفظ والمراجعة.</li>
-                    <li><i class="fa-solid fa-leaf"></i> دعم ومتابعة حتى تصل لهدفك.</li>
-                </ul>
-            </div>
+      <!-- الأيام والأوقات -->
+      <section class="form-card">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">٣</span>
+            <h2>ما الأوقات المناسبة لك؟</h2>
+          </div>
+          <span class="heading-note">يمكنك اختيار أكثر من موعد</span>
+        </div>
 
-            <div class="sidebar-card" style="background: #e9f2ee; border: none;">
-                <a href="#" class="whatsapp-box" onclick="sendToWhatsApp(event)">
-                    <span class="whatsapp-box-text">إرسال طلب الالتحاق عبر واتساب</span>
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <p class="whatsapp-desc">بعد الضغط على زر الإرسال، سيتم توجيه بياناتك كاملة إلى رقم المسؤول لاستكمال خطوات الانضمام إلى صحبة القرآن.</p>
-            </div>
+        <div class="question-block">
+          <p class="question-label">الأيام المناسبة <span>*</span></p>
 
-            <div class="quote-card">
-                <div class="quote-title">﴿أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ أَمْ عَلَىٰ قُلُوبٍ أَقْفَالُهَا﴾</div>
-                <div class="divider-icon">
-                    <i class="fa-solid fa-dharmachakra"></i>
-                </div>
-            </div>
-        </aside>
+          <div class="days-grid">
+            <label class="day-option"><input type="checkbox" name="days" value="السبت"><span>السبت</span></label>
+            <label class="day-option"><input type="checkbox" name="days" value="الأحد"><span>الأحد</span></label>
+            <label class="day-option"><input type="checkbox" name="days" value="الاثنين"><span>الاثنين</span></label>
+            <label class="day-option"><input type="checkbox" name="days" value="الثلاثاء"><span>الثلاثاء</span></label>
+            <label class="day-option"><input type="checkbox" name="days" value="الأربعاء"><span>الأربعاء</span></label>
+            <label class="day-option"><input type="checkbox" name="days" value="الخميس"><span>الخميس</span></label>
+            <label class="day-option"><input type="checkbox" name="days" value="الجمعة"><span>الجمعة</span></label>
+          </div>
+        </div>
 
-    </div>
+        <div class="question-block">
+          <p class="question-label">الأوقات المناسبة خلال اليوم <span>*</span></p>
+
+          <div class="choice-grid time-grid">
+            <label class="choice-card time-card">
+              <input type="checkbox" name="times" value="صباحًا">
+              <span class="choice-content">
+                <strong>صباحًا</strong>
+                <small>الفترة الصباحية</small>
+              </span>
+              <i class="fa-solid fa-circle-check selected-icon"></i>
+            </label>
+
+            <label class="choice-card time-card">
+              <input type="checkbox" name="times" value="ظهرًا">
+              <span class="choice-content">
+                <strong>ظهرًا</strong>
+                <small>فترة الظهيرة</small>
+              </span>
+              <i class="fa-solid fa-circle-check selected-icon"></i>
+            </label>
+
+            <label class="choice-card time-card">
+              <input type="checkbox" name="times" value="مساءً">
+              <span class="choice-content">
+                <strong>مساءً</strong>
+                <small>الفترة المسائية</small>
+              </span>
+              <i class="fa-solid fa-circle-check selected-icon"></i>
+            </label>
+
+            <label class="choice-card time-card">
+              <input type="checkbox" name="times" value="ليلًا">
+              <span class="choice-content">
+                <strong>ليلًا</strong>
+                <small>الفترة الليلية</small>
+              </span>
+              <i class="fa-solid fa-circle-check selected-icon"></i>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- طريقة المتابعة -->
+      <section class="form-card">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">٤</span>
+            <h2>كيف تفضل متابعة الحفظ؟</h2>
+          </div>
+          <span class="heading-note">اختر الطريقة الأنسب لك</span>
+        </div>
+
+        <div class="choice-grid two-columns">
+          <label class="choice-card">
+            <input type="radio" name="followMethod" value="تسميع صوتي" required>
+            <span class="choice-icon"><i class="fa-solid fa-microphone"></i></span>
+            <span class="choice-content">
+              <strong>تسميع صوتي</strong>
+              <small>متابعة الحفظ والتسميع بالصوت.</small>
+            </span>
+            <i class="fa-solid fa-circle-check selected-icon"></i>
+          </label>
+
+          <label class="choice-card">
+            <input type="radio" name="followMethod" value="تسميع بالصوت والصورة">
+            <span class="choice-icon"><i class="fa-solid fa-video"></i></span>
+            <span class="choice-content">
+              <strong>تسميع بالصوت والصورة</strong>
+              <small>متابعة الحفظ عبر مكالمة مرئية.</small>
+            </span>
+            <i class="fa-solid fa-circle-check selected-icon"></i>
+          </label>
+        </div>
+      </section>
+
+      <!-- زر الإرسال -->
+      <section class="submit-area">
+        <button type="submit" class="submit-button">
+          <i class="fa-brands fa-whatsapp"></i>
+          إرسال طلب الالتحاق عبر واتساب
+        </button>
+
+        <p>راجع بياناتك قبل الإرسال، وسنساعدك في متابعة رحلتك مع القرآن الكريم.</p>
+
+        <span class="privacy-note">
+          <i class="fa-solid fa-shield-halved"></i>
+          بياناتك مخصصة للتواصل بشأن طلب الالتحاق.
+        </span>
+      </section>
+
+    </form>
+  </main>
 
     <!-- Footer -->
     <footer>
@@ -229,6 +283,7 @@
         <div class="copyright">جميع الحقوق محفوظة © صحبة القرآن 2026</div>
     </footer>
 
-    <script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>

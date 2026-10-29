@@ -1,128 +1,138 @@
 
-/* =====================================
-   1. اختيار نوع الطلب من الكروت
-===================================== */
-function selectCard(element, inputId, value) {
-    // إزالة التحديد من جميع كروت نوع الطلب
-    document.querySelectorAll('.choice-card').forEach(card => {
-        card.classList.remove('selected');
-        card.setAttribute('aria-pressed', 'false');
-    });
+const requestForm = document.getElementById("requestForm");
 
-    // تحديد الكارت الذي تم الضغط عليه
-    element.classList.add('selected');
-    element.setAttribute('aria-pressed', 'true');
+// استبدلي الرقم التالي برقم واتساب الاستقبال الحقيقي.
+// مثال تنسيقي لمصر: 2010XXXXXXXX
+const WHATSAPP_NUMBER = "201XXXXXXXXX";
 
-    // تحديث قيمة نوع الطلب
-    const input = document.getElementById(inputId);
+// تحديث شكل الاختيارات عند الضغط عليها.
+// لا يوجد أي اختيار محدد افتراضيًا.
+document.querySelectorAll(".choice-card, .day-option").forEach((card) => {
+  const input = card.querySelector("input");
 
-    if (input) {
-        input.value = value;
+  input.addEventListener("change", () => {
+    const groupName = input.name;
+
+    // في radio: اختيار واحد فقط داخل المجموعة.
+    if (input.type === "radio") {
+      document
+        .querySelectorAll(`input[name="${groupName}"]`)
+        .forEach((item) => {
+          item.closest(".choice-card")?.classList.toggle(
+            "is-selected",
+            item.checked
+          );
+        });
     } else {
-        console.error('لم يتم العثور على الحقل:', inputId);
+      // في checkbox: كل اختيار مستقل.
+      card.classList.toggle("is-selected", input.checked);
     }
-}
+  });
+});
 
+// تحديث شكل أيام الأسبوع.
+document.querySelectorAll(".day-option input").forEach((input) => {
+  input.addEventListener("change", () => {
+    input.closest(".day-option").classList.toggle(
+      "is-selected",
+      input.checked
+    );
+  });
+});
 
-/* =====================================
-   2. اختيار طريقة التسميع
-===================================== */
-function selectMethod(element, value) {
-    // إزالة التحديد من جميع طرق التسميع
-    document.querySelectorAll('.method-card').forEach(card => {
-        card.classList.remove('selected');
-        card.setAttribute('aria-pressed', 'false');
-    });
+requestForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-    // تحديد الطريقة المختارة
-    element.classList.add('selected');
-    element.setAttribute('aria-pressed', 'true');
+  const studentName = document
+    .getElementById("studentName").value.trim();
 
-    // تحديث قيمة طريقة التسميع
-    const input = document.getElementById('method_type');
+  const studentAge = document
+    .getElementById("studentAge").value.trim();
 
-    if (input) {
-        input.value = value;
-    } else {
-        console.error('لم يتم العثور على الحقل: method_type');
-    }
-}
+  const studentPhone = document
+    .getElementById("studentPhone").value.trim();
 
+  const requestType = requestForm.querySelector(
+    'input[name="requestType"]:checked'
+  );
 
-/* =====================================
-   3. إرسال طلب الالتحاق إلى واتساب
-===================================== */
-function sendToWhatsApp(e) {
-    if (e) {
-        e.preventDefault();
-    }
+  const goals = [
+    ...requestForm.querySelectorAll('input[name="goals"]:checked')
+  ].map((input) => input.value);
 
-    // البيانات الشخصية
-    const name = document.getElementById('fullname')?.value.trim() || '';
-    const age = document.getElementById('age')?.value.trim() || '';
-    const phone = document.getElementById('phone')?.value.trim() || '';
+  const days = [
+    ...requestForm.querySelectorAll('input[name="days"]:checked')
+  ].map((input) => input.value);
 
-    // المستوى الحالي
-    const selectedLevel = document.querySelector('input[name="level"]:checked');
-    const level = selectedLevel ? selectedLevel.value : '';
+  const times = [
+    ...requestForm.querySelectorAll('input[name="times"]:checked')
+  ].map((input) => input.value);
 
-    // مقدار الحفظ الحالي
-    const currentHifz =
-        document.getElementById('current_hifz')?.value.trim() || 'لا يوجد';
+  const followMethod = requestForm.querySelector(
+    'input[name="followMethod"]:checked'
+  );
 
-    // نوع الطلب
-    const requestType =
-        document.getElementById('request_type')?.value || '';
+  // التحقق من الحقول المطلوبة.
+  if (
+    !studentName ||
+    !studentAge ||
+    !studentPhone ||
+    !requestType ||
+    !followMethod
+  ) {
+    alert("من فضلك أكمل البيانات المطلوبة واختر نوع الطلب وطريقة المتابعة.");
+    return;
+  }
 
-    // الأيام والأوقات المناسبة
-    const days = document.getElementById('days')?.value.trim() || '';
-    const times = document.getElementById('times')?.value.trim() || '';
+  if (goals.length === 0) {
+    alert("من فضلك اختر هدفًا واحدًا على الأقل من الالتحاق.");
+    return;
+  }
 
-    // طريقة التسميع
-    const method =
-        document.getElementById('method_type')?.value || '';
+  if (days.length === 0) {
+    alert("من فضلك اختر يومًا واحدًا على الأقل يناسبك.");
+    return;
+  }
 
-    // التأكد من ملء البيانات المطلوبة
-    if (!name || !age || !phone || !level || !days || !times) {
-        alert('برجاء ملء جميع الحقول المطلوبة أولاً!');
-        return;
-    }
+  if (times.length === 0) {
+    alert("من فضلك اختر وقتًا واحدًا على الأقل يناسبك.");
+    return;
+  }
 
-    if (!requestType) {
-        alert('برجاء اختيار نوع الطلب أولاً!');
-        return;
-    }
+  if (!/^[0-9+\s()-]{7,20}$/.test(studentPhone)) {
+    alert("من فضلك أدخل رقم هاتف صحيحًا.");
+    return;
+  }
 
-    if (!method) {
-        alert('برجاء اختيار طريقة التسميع أولاً!');
-        return;
-    }
+  // التأكد من تغيير رقم واتساب الافتراضي.
+  if (!/^20\d{10,11}$/.test(WHATSAPP_NUMBER)) {
+    alert("يجب ضبط رقم واتساب الاستقبال داخل ملف script.js أولًا.");
+    return;
+  }
 
-    // رقم واتساب المسؤول، غيّريه إلى الرقم الصحيح
-    // اكتبي الرقم بكود الدولة من غير + أو مسافات
-    const targetPhone = '201000000000';
+  // تجهيز رسالة الطلب.
+  const message = [
+    "السلام عليكم ورحمة الله وبركاته 🌿",
+    "",
+    "أرغب في تقديم طلب التحاق بصُحبة القرآن.",
+    "",
+    "📋 بيانات الطالب:",
+    `الاسم: ${studentName}`,
+    `السن: ${studentAge}`,
+    `رقم الهاتف: ${studentPhone}`,
+    "",
+    `📖 نوع الطلب: ${requestType.value}`,
+    `🎯 أهداف الالتحاق: ${goals.join("، ")}`,
+    `📅 الأيام المناسبة: ${days.join("، ")}`,
+    `🕒 الأوقات المناسبة: ${times.join("، ")}`,
+    `🎧 طريقة المتابعة: ${followMethod.value}`,
+    "",
+    "جزاكم الله خيرًا."
+  ].join("\n");
 
-    // تكوين رسالة الطلب
-    const message =
-        `*طلب التحاق جديد - صُحبة القرآن* 📖\n\n` +
-        `*1. البيانات الشخصية:*\n` +
-        `• الاسم: ${name}\n` +
-        `• السن: ${age}\n` +
-        `• رقم الهاتف: ${phone}\n` +
-        `• المستوى: ${level}\n` +
-        `• المقدار الحالي: ${currentHifz}\n\n` +
-        `*2. نوع الطلب:*\n` +
-        `• ${requestType}\n\n` +
-        `*3. الوقت المناسب:*\n` +
-        `• الأيام: ${days}\n` +
-        `• الأوقات: ${times}\n\n` +
-        `*4. طريقة التسميع:*\n` +
-        `• ${method}`;
+  const whatsappURL =
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-    // ترميز الرسالة بطريقة صحيحة للرابط
-    const whatsappUrl =
-        `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
-
-    // فتح واتساب بالرسالة
-    window.open(whatsappUrl, '_blank');
-}
+  // فتح واتساب مرة واحدة برسالة جاهزة.
+  window.open(whatsappURL, "_blank", "noopener,noreferrer");
+});
