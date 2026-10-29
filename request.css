@@ -548,6 +548,44 @@ a {
   font-size: 12px;
 }
 
+
+/* رسائل التحقق من الحقول المطلوبة */
+.field-error {
+  display: block;
+  margin-top: 7px;
+  color: #b42318;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.input-error {
+  border-color: #b42318 !important;
+  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.08);
+}
+
+.choice-error {
+  padding: 8px 12px;
+  margin-top: 10px;
+  color: #b42318;
+  background: #fff3f1;
+  border: 1px solid #f0c8c3;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.choice-card:focus-within {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.error-icon {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
 /* Responsive layout */
 
 @media (max-width: 700px) {
