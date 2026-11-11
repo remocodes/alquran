@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -26,7 +25,6 @@
             <a href="about.html">عن الموقع</a>
             <a href="teachers.html" >المحفّظون</a>
             <a href="request.html" class="active">طلب الالتحاق</a>
-            <a href="packages.html">الباقات والاشتراكات</a>
             <a href="contact.html">تواصل معنا</a>
         </nav>
     </header>
@@ -113,6 +111,7 @@
         </div>
       </section>
 
+
       <!-- أهداف الالتحاق -->
       <section class="form-card">
         <div class="section-heading">
@@ -156,11 +155,57 @@
         </div>
       </section>
 
-      <!-- الأيام والأوقات -->
+      
+      <!-- اختيار الباقة المناسبة (الجزء المضاف حديثاً) -->
       <section class="form-card">
         <div class="section-heading">
           <div>
             <span class="section-number">٣</span>
+            <h2>اختر الباقة المناسبة</h2>
+          </div>
+          <span class="heading-note">اختر باقة واحدة</span>
+        </div>
+
+        <div class="question-block">
+          <div class="choice-grid three-columns">
+            <label class="choice-card goal-card">
+              <input type="radio" name="selectedPackage" value="الباقة الأساسية (150 جنيه/شهرياً)" required>
+              <span class="choice-icon"><i class="fa-solid fa-star"></i></span>
+              <span class="choice-content">
+                <strong>الباقة الأساسية</strong>
+                <small>150 جنيه شهريًا - 3 حصص أسبوعياً</small>
+              </span>
+              <i class="fa-solid fa-circle-check selected-icon"></i>
+            </label>
+
+            <label class="choice-card goal-card">
+              <input type="radio" name="selectedPackage" value="الباقة المتوسطة (200 جنيه/شهرياً)">
+              <span class="choice-icon"><i class="fa-solid fa-award"></i></span>
+              <span class="choice-content">
+                <strong>الباقة المتوسطة</strong>
+                <small>200 جنيه شهريًا - 4 حصص أسبوعياً</small>
+              </span>
+              <i class="fa-solid fa-circle-check selected-icon"></i>
+            </label>
+
+            <label class="choice-card goal-card">
+              <input type="radio" name="selectedPackage" value="الباقة المكثفة (250 جنيه/شهرياً)">
+              <span class="choice-icon"><i class="fa-solid fa-gem"></i></span>
+              <span class="choice-content">
+                <strong>الباقة المكثفة</strong>
+                <small>250 جنيه شهريًا - 5 حصص أسبوعياً</small>
+              </span>
+              <i class="fa-solid fa-circle-check selected-icon"></i>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- الأيام والأوقات -->
+      <section class="form-card">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">٤</span>
             <h2>ما الأوقات المناسبة لك؟</h2>
           </div>
           <span class="heading-note">يمكنك اختيار أكثر من موعد</span>
@@ -227,7 +272,7 @@
       <section class="form-card">
         <div class="section-heading">
           <div>
-            <span class="section-number">٤</span>
+            <span class="section-number">٥</span>
             <h2>كيف تفضل متابعة الحفظ؟</h2>
           </div>
           <span class="heading-note">اختر الطريقة الأنسب لك</span>

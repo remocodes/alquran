@@ -1,4 +1,3 @@
-
 const requestForm = document.getElementById("requestForm");
 // قراءة رابط واتساب من ملف الثوابت.
 const linkRequestJoin =
@@ -119,6 +118,14 @@ document
         clearError(
           requestForm.querySelector(
             'input[name="requestType"]'
+          ).closest(".question-block")
+        );
+      }
+
+      if (input.name === "selectedPackage") {
+        clearError(
+          requestForm.querySelector(
+            'input[name="selectedPackage"]'
           ).closest(".question-block")
         );
       }
@@ -253,6 +260,21 @@ function handleRequestSubmit(event) {
     requestTypeContainer
   );
 
+  // 4.5. اختيار الباقة: اختيار واحد مطلوب.
+  const packageContainer =
+    requestForm.querySelector(
+      'input[name="selectedPackage"]'
+    ).closest(".question-block");
+
+  check(
+    validateGroup(
+      'input[name="selectedPackage"]:checked',
+      packageContainer,
+      "من فضلك اختر الباقة المناسبة."
+    ),
+    packageContainer
+  );
+
   // 5. أهداف الالتحاق: يمكن اختيار أكثر من هدف.
   const goalsContainer =
     requestForm.querySelector('input[name="goals"]')
@@ -337,6 +359,10 @@ if (!/^https:\/\/wa\.me\/20\d{10,11}$/.test(linkRequestJoin)) {
     'input[name="requestType"]:checked'
   ).value;
 
+  const selectedPackage = requestForm.querySelector(
+    'input[name="selectedPackage"]:checked'
+  ).value;
+
   const goals = [
     ...requestForm.querySelectorAll(
       'input[name="goals"]:checked'
@@ -371,6 +397,7 @@ if (!/^https:\/\/wa\.me\/20\d{10,11}$/.test(linkRequestJoin)) {
     `رقم الهاتف: ${studentPhone}`,
     "",
     `📖 نوع الطلب: ${requestType}`,
+    `⭐ الباقة المختارة: ${selectedPackage}`,
     `🎯 أهداف الالتحاق: ${goals.join("، ")}`,
     `📅 الأيام المناسبة: ${days.join("، ")}`,
     `🕒 الأوقات المناسبة: ${times.join("، ")}`,
