@@ -9,16 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <!-- ربط ملف التنسيق -->
-             <link rel="stylesheet" href="style.css">
-
-        <link rel="stylesheet" href="about.css">
-
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
 </head>
 <body>
 
      <!-- رأس الموقع -->
     <header class="site-header">
-
         <a href="index.html" class="logo">
             <img src="imeg2.jpeg" alt="شعار صُحبة القرآن">
             <span>صُحبة القرآن</span>
@@ -26,14 +23,14 @@
 
         <!-- قائمة التنقل -->
         <nav class="navbar">
-            <a href="index.html" >الرئيسية</a>
-            <a href="about.html"class="active" >عن الموقع</a>
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html" class="active">عن الموقع</a>
             <a href="teachers.html">المحفّظون</a>
             <a href="request.html">طلب الالتحاق</a>
             <a href="contact.html">تواصل معنا</a>
         </nav>
-
     </header>
+
     <div class="container">
 
         <!-- قسم عن الموقع -->
@@ -94,7 +91,6 @@
                             <li>مدة الحلقة: ساعة ونصف</li>
                         </ul>
                     </div>
-                    <button class="btn-select">اختار الباقة الأساسية</button>
                 </div>
 
                 <div class="card pricing-card">
@@ -114,7 +110,6 @@
                             <li>مدة الحلقة: ساعة ونصف</li>
                         </ul>
                     </div>
-                    <button class="btn-select">اختار الباقة المتوسطة</button>
                 </div>
 
                 <div class="card pricing-card highlight">
@@ -136,7 +131,6 @@
                             <li>مدة الحلقة: ساعة ونصف</li>
                         </ul>
                     </div>
-                    <button class="btn-select filled">اختار الباقة المكثفة</button>
                 </div>
             </div>
         </section>
@@ -172,7 +166,6 @@
                         </div>
                     </div>
                     <div class="ind-footer">مناسبة شخصية وتركز كامل من المعلمة لطالب واحدة في كل جلسة</div>
-                    <button class="btn-select">طلب الالتحاق (بنات)</button>
                 </div>
 
                 <div class="card ind-card">
@@ -198,7 +191,6 @@
                         </div>
                     </div>
                     <div class="ind-footer">مناسبة شخصية وتركز كامل من المحفظ لطالب واحد في كل جلسة</div>
-                    <button class="btn-select">طلب الالتحاق (أولاد)</button>
                 </div>
             </div>
 
@@ -209,29 +201,25 @@
                     <p>نؤمن أن تعلم كتاب الله وحفظه حق متاح للجميع، ولذلك نوفر اشتراكات مجانية لغير القادرين ماديًا، حتى لا تكون الظروف المادية عائقًا أمام من يرغب في حفظ القرآن الكريم وتعلمه.</p>
                 </div>
                 <div>
-                    <a href="request.html" class="btn-banner">تواصل مع الإدارة للتقديم ←</a>
+                    <a href="#" id="initiativeWhatsAppBtn" class="btn-banner">تواصل مع الإدارة للاستفسار ←</a>
                     <p class="banner-sub">التقديم متاح بسريّة وأخوة تامة</p>
                 </div>
             </div>
         </section>
-           <div class="hero-buttons">
 
-                    <a href="request.html" class="main-button">
-                        ابدأ رحلة الحفظ
-                    </a>
+        <div class="hero-buttons">
+            <a href="request.html" class="main-button">
+                ابدأ رحلة الحفظ
+            </a>
 
-                    <a href="about.html" class="secondary-button">
-                    تعرّف عَلَى المحفّظون
-                    </a>
-
-                </div>
-
-            </div>
-
+            <a href="teachers.html" class="secondary-button">
+                تعرّف عَلَى المحفّظون
+            </a>
+        </div>
 
     </div>
 
-    <!-- Footer (أيقونة المسجد باللون الأبيض) -->
+    <!-- Footer -->
     <footer>
         <div class="logo-footer">
             <i class="fa-solid fa-mosque"></i>
@@ -249,6 +237,7 @@
     </footer>
 
     <!-- ربط ملف JavaScript -->
+    <script src="appConstants.js"></script>
     <script src="about.js"></script>
 
 </body>

@@ -1,10 +1,11 @@
 const requestForm = document.getElementById("requestForm");
 // قراءة رابط واتساب من ملف الثوابت.
-const linkRequestJoin =
-  window.APP_CONSTANTS.linkRequestJoin;
+const linkRequestJoin = window.APP_CONSTANTS ? window.APP_CONSTANTS.linkRequestJoin : "";
 
-// منع إرسال الفورم بالطريقة الافتراضية.
-requestForm.addEventListener("submit", handleRequestSubmit);
+if (requestForm) {
+  // منع إرسال الفورم بالطريقة الافتراضية.
+  requestForm.addEventListener("submit", handleRequestSubmit);
+}
 
 // إضافة رسالة خطأ أسفل العنصر المطلوب.
 function showError(target, message, type = "field") {
@@ -28,6 +29,7 @@ function showError(target, message, type = "field") {
     input.setAttribute("aria-invalid", "true");
   }
 }
+
 // إزالة رسالة الخطأ عند تصحيح البيانات.
 function clearError(target) {
   const next = target.nextElementSibling;
@@ -42,7 +44,7 @@ function clearError(target) {
 
   const input = target.querySelector("input") || target;
 
-  if (input.classList) {
+  if (input && input.classList) {
     input.classList.remove("input-error");
     input.removeAttribute("aria-invalid");
   }
@@ -51,7 +53,7 @@ function clearError(target) {
 // إظهار الخطأ عند ترك الحقول النصية فارغة.
 function validateTextField(id, message) {
   const input = document.getElementById(id);
-  const field = input.closest(".field");
+  if (!input) return true;
 
   clearError(input);
 
@@ -115,45 +117,42 @@ document
 
       // إزالة تنبيه المجموعة بعد إتمام الاختيار.
       if (input.name === "requestType") {
-        clearError(
-          requestForm.querySelector(
-            'input[name="requestType"]'
-          ).closest(".question-block")
-        );
+        const reqEl = requestForm.querySelector('input[name="requestType"]');
+        if (reqEl) clearError(reqEl.closest(".question-block"));
       }
 
       if (input.name === "selectedPackage") {
-        clearError(
-          requestForm.querySelector(
-            'input[name="selectedPackage"]'
-          ).closest(".question-block")
-        );
+        const pkgEl = requestForm.querySelector('input[name="selectedPackage"]');
+        if (pkgEl) clearError(pkgEl.closest(".question-block"));
       }
 
       if (input.name === "followMethod") {
-        clearError(
-          requestForm.querySelector(
-            'input[name="followMethod"]'
-          ).closest(".form-card")
-        );
+        const folEl = requestForm.querySelector('input[name="followMethod"]');
+        if (folEl) clearError(folEl.closest(".form-card"));
       }
 
       if (input.name === "goals") {
-        clearError(card.closest(".form-card").querySelector(
-          ".choice-grid"
-        ));
+        const goalCard = card.closest(".form-card");
+        if (goalCard) {
+          const grid = goalCard.querySelector(".choice-grid");
+          if (grid) clearError(grid);
+        }
       }
 
       if (input.name === "days") {
-        clearError(card.closest(".question-block").querySelector(
-          ".days-grid"
-        ));
+        const dayBlock = card.closest(".question-block");
+        if (dayBlock) {
+          const daysGrid = dayBlock.querySelector(".days-grid");
+          if (daysGrid) clearError(daysGrid);
+        }
       }
 
       if (input.name === "times") {
-        clearError(card.closest(".question-block").querySelector(
-          ".time-grid"
-        ));
+        const timeBlock = card.closest(".question-block");
+        if (timeBlock) {
+          const timeGrid = timeBlock.querySelector(".time-grid");
+          if (timeGrid) clearError(timeGrid);
+        }
       }
     });
   });
@@ -161,10 +160,11 @@ document
 // إزالة تنبيه الحقول النصية بمجرد تعديلها.
 ["studentName", "studentAge", "studentPhone"].forEach((id) => {
   const input = document.getElementById(id);
-
-  input.addEventListener("input", () => {
-    clearError(input);
-  });
+  if (input) {
+    input.addEventListener("input", () => {
+      clearError(input);
+    });
+  }
 });
 
 function handleRequestSubmit(event) {
@@ -192,18 +192,13 @@ function handleRequestSubmit(event) {
     }
   }
 
-  const studentName =
-    document.getElementById("studentName").value.trim();
-
-  const studentAge =
-    document.getElementById("studentAge").value.trim();
-
-  const studentPhone =
-    document.getElementById("studentPhone").value.trim();
-
   const nameInput = document.getElementById("studentName");
   const ageInput = document.getElementById("studentAge");
   const phoneInput = document.getElementById("studentPhone");
+
+  const studentName = nameInput ? nameInput.value.trim() : "";
+  const studentAge = ageInput ? ageInput.value.trim() : "";
+  const studentPhone = phoneInput ? phoneInput.value.trim() : "";
 
   // 1. الاسم.
   check(
@@ -246,89 +241,86 @@ function handleRequestSubmit(event) {
   check(phoneValid, phoneInput);
 
   // 4. نوع طلب الالتحاق: اختيار واحد.
-  const requestTypeContainer =
-    requestForm.querySelector(
-      'input[name="requestType"]'
-    ).closest(".question-block");
-
-  check(
-    validateGroup(
-      'input[name="requestType"]:checked',
-      requestTypeContainer,
-      "من فضلك اختر نوع طلب الالتحاق."
-    ),
-    requestTypeContainer
-  );
+  const reqTypeRadio = requestForm.querySelector('input[name="requestType"]');
+  if (reqTypeRadio) {
+    const requestTypeContainer = reqTypeRadio.closest(".question-block");
+    check(
+      validateGroup(
+        'input[name="requestType"]:checked',
+        requestTypeContainer,
+        "من فضلك اختر نوع طلب الالتحاق."
+      ),
+      requestTypeContainer
+    );
+  }
 
   // 4.5. اختيار الباقة: اختيار واحد مطلوب.
-  const packageContainer =
-    requestForm.querySelector(
-      'input[name="selectedPackage"]'
-    ).closest(".question-block");
+  const pkgRadio = requestForm.querySelector('input[name="selectedPackage"]');
+  if (pkgRadio) {
+    const packageContainer = pkgRadio.closest(".question-block");
+    check(
+      validateGroup(
+        'input[name="selectedPackage"]:checked',
+        packageContainer,
+        "من فضلك اختر الباقة المناسبة."
+      ),
+      packageContainer
+    );
+  }
 
-  check(
-    validateGroup(
-      'input[name="selectedPackage"]:checked',
-      packageContainer,
-      "من فضلك اختر الباقة المناسبة."
-    ),
-    packageContainer
-  );
-
-  // 5. أهداف الالتحاق: يمكن اختيار أكثر من هدف.
-  const goalsContainer =
-    requestForm.querySelector('input[name="goals"]')
-      .closest(".choice-grid");
-
-  check(
-    validateMultiple(
-      'input[name="goals"]:checked',
-      goalsContainer,
-      "من فضلك اختر هدفًا واحدًا على الأقل."
-    ),
-    goalsContainer
-  );
+  // 5. أهداف الالتحاق.
+  const goalsInput = requestForm.querySelector('input[name="goals"]');
+  if (goalsInput) {
+    const goalsContainer = goalsInput.closest(".choice-grid");
+    check(
+      validateMultiple(
+        'input[name="goals"]:checked',
+        goalsContainer,
+        "من فضلك اختر هدفًا واحدًا على الأقل."
+      ),
+      goalsContainer
+    );
+  }
 
   // 6. الأيام.
-  const daysContainer =
-    requestForm.querySelector(".days-grid");
-
-  check(
-    validateMultiple(
-      'input[name="days"]:checked',
-      daysContainer,
-      "من فضلك اختر يومًا واحدًا على الأقل."
-    ),
-    daysContainer
-  );
+  const daysContainer = requestForm.querySelector(".days-grid");
+  if (daysContainer) {
+    check(
+      validateMultiple(
+        'input[name="days"]:checked',
+        daysContainer,
+        "من فضلك اختر يومًا واحدًا على الأقل."
+      ),
+      daysContainer
+    );
+  }
 
   // 7. الأوقات.
-  const timesContainer =
-    requestForm.querySelector(".time-grid");
+  const timesContainer = requestForm.querySelector(".time-grid");
+  if (timesContainer) {
+    check(
+      validateMultiple(
+        'input[name="times"]:checked',
+        timesContainer,
+        "من فضلك اختر وقتًا واحدًا على الأقل."
+      ),
+      timesContainer
+    );
+  }
 
-  check(
-    validateMultiple(
-      'input[name="times"]:checked',
-      timesContainer,
-      "من فضلك اختر وقتًا واحدًا على الأقل."
-    ),
-    timesContainer
-  );
-
-  // 8. طريقة المتابعة: اختيار واحد.
-  const followMethodContainer =
-    requestForm.querySelector(
-      'input[name="followMethod"]'
-    ).closest(".form-card");
-
-  check(
-    validateGroup(
-      'input[name="followMethod"]:checked',
-      followMethodContainer,
-      "من فضلك اختر طريقة المتابعة."
-    ),
-    followMethodContainer
-  );
+  // 8. طريقة المتابعة.
+  const followRadio = requestForm.querySelector('input[name="followMethod"]');
+  if (followRadio) {
+    const followMethodContainer = followRadio.closest(".form-card");
+    check(
+      validateGroup(
+        'input[name="followMethod"]:checked',
+        followMethodContainer,
+        "من فضلك اختر طريقة المتابعة."
+      ),
+      followMethodContainer
+    );
+  }
 
   // منع الإرسال إذا كانت هناك بيانات ناقصة.
   if (!isValid) {
@@ -347,43 +339,35 @@ function handleRequestSubmit(event) {
   }
 
   // التحقق من رابط واتساب المحفظ.
-if (!/^https:\/\/wa\.me\/20\d{10,11}$/.test(linkRequestJoin)) {
-  alert(
-    "من فضلك اضبط رابط واتساب المحفظ في ملف appConstants.js."
-  );
-  return;
-}
+  const activeLink = window.APP_CONSTANTS ? window.APP_CONSTANTS.linkRequestJoin : "";
+  if (!/^https:\/\/wa\.me\/20\d{10,11}$/.test(activeLink)) {
+    alert(
+      "من فضلك اضبط رابط واتساب المحفظ في ملف appConstants.js."
+    );
+    return;
+  }
 
   // جمع الاختيارات.
-  const requestType = requestForm.querySelector(
-    'input[name="requestType"]:checked'
-  ).value;
+  const reqChecked = requestForm.querySelector('input[name="requestType"]:checked');
+  const requestType = reqChecked ? reqChecked.value : "";
 
-  const selectedPackage = requestForm.querySelector(
-    'input[name="selectedPackage"]:checked'
-  ).value;
+  const pkgChecked = requestForm.querySelector('input[name="selectedPackage"]:checked');
+  const selectedPackage = pkgChecked ? pkgChecked.value : "";
 
   const goals = [
-    ...requestForm.querySelectorAll(
-      'input[name="goals"]:checked'
-    )
+    ...requestForm.querySelectorAll('input[name="goals"]:checked')
   ].map((input) => input.value);
 
   const days = [
-    ...requestForm.querySelectorAll(
-      'input[name="days"]:checked'
-    )
+    ...requestForm.querySelectorAll('input[name="days"]:checked')
   ].map((input) => input.value);
 
   const times = [
-    ...requestForm.querySelectorAll(
-      'input[name="times"]:checked'
-    )
+    ...requestForm.querySelectorAll('input[name="times"]:checked')
   ].map((input) => input.value);
 
-  const followMethod = requestForm.querySelector(
-    'input[name="followMethod"]:checked'
-  ).value;
+  const followChecked = requestForm.querySelector('input[name="followMethod"]:checked');
+  const followMethod = followChecked ? followChecked.value : "";
 
   // إنشاء رسالة واتساب منظمة.
   const message = [
@@ -405,8 +389,9 @@ if (!/^https:\/\/wa\.me\/20\d{10,11}$/.test(linkRequestJoin)) {
     "",
     "جزاكم الله خيرًا."
   ].join("\n");
-const whatsappURL =
-    `${linkRequestJoin}?text=${encodeURIComponent(message)}`;
+
+  const whatsappURL = `${activeLink}?text=${encodeURIComponent(message)}`;
+  
   // فتح واتساب برسالة جاهزة للمراجعة والإرسال.
   const whatsappWindow = window.open(
     whatsappURL,
