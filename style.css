@@ -43,12 +43,14 @@ body {
     color: var(--text);
     line-height: 1.8;
     min-height: 100vh;
-      -webkit-user-select: none;
+    -webkit-user-select: none;
     user-select: none;
 }
 
 a {
     -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: inherit;
 }
 
 /* ========================================
@@ -394,13 +396,6 @@ a {
     line-height: 2;
 }
 
-/* الحفاظ على لون عنوان صفحة عن الموقع */
-
-.about-hero h1,
-.about-hero h1 span {
-    color: #075b46;
-}
-
 /* ========================================
    الفوتر العام لجميع الصفحات
 ======================================== */
@@ -439,8 +434,6 @@ footer:not(.site-footer) .copyright {
     color: #d7e5dc;
     font-size: 11px;
 }
-
-/* الفوتر الموحد الذي يستخدم site-footer */
 
 .site-footer {
     width: 100%;
@@ -485,7 +478,6 @@ footer:not(.site-footer) .copyright {
     font-size: 10px;
     color: #d7e5dc;
 }
-
 /* ========================================
    صفحة المحفّظين
 ======================================== */
@@ -501,8 +493,6 @@ footer:not(.site-footer) .copyright {
     background: var(--tp-cream);
     color: var(--tp-text);
 }
-
-/* مقدمة صفحة المحفّظين */
 
 .teachers-hero {
     min-height: 250px;
@@ -575,17 +565,15 @@ footer:not(.site-footer) .copyright {
     font-weight: normal;
 }
 
-/* منطقة بطاقات المحفّظين */
-
 .teachers-section {
-    width: 80%;
+    width: 92%;
     max-width: 1230px;
-    margin: 20px auto 18px;
+    margin: 25px auto 20px;
 }
 
 .teachers-heading {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .teachers-heading h2 {
@@ -599,17 +587,18 @@ footer:not(.site-footer) .copyright {
     font-size: 13px;
 }
 
+/* جعل الكروت الثلاثة بجانب بعضها البعض */
 .teachers-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
     align-items: stretch;
 }
 
 .teacher-card {
     min-width: 0;
     min-height: 270px;
-    padding: 19px 25px 14px;
+    padding: 22px 20px 16px;
     background: rgba(255, 255, 255, 0.44);
     border: 1px solid #e6dbc4;
     border-radius: 13px;
@@ -623,37 +612,27 @@ footer:not(.site-footer) .copyright {
     box-shadow: 0 6px 16px rgba(7, 91, 77, 0.09);
 }
 
+/* توسيط اسم المحفظ والوسم تماماً في المنتصف */
 .teacher-profile {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 15px;
-    margin-bottom: 8px;
-}
-
-.teacher-photo {
-    width: 92px;
-    height: 92px;
-    min-width: 92px;
-    flex-shrink: 0;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-    background: #deded9;
-    border: 0;
-    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    flex: 1;
 }
 
 .teacher-info {
-    flex: 1;
-    min-width: 0;
-    text-align: right;
+    width: 100%;
+    text-align: center;
     padding-top: 0;
 }
 
 .teacher-info h3 {
     color: var(--tp-green);
-    font-size: clamp(17px, 1.7vw, 22px);
+    font-size: clamp(17px, 1.5vw, 21px);
     line-height: 1.6;
     margin: 0 0 7px;
 }
@@ -673,23 +652,24 @@ footer:not(.site-footer) .copyright {
     color: #69817e;
     font-size: 13px;
     line-height: 1.9;
-    margin: 0 0 10px;
+    margin: 0 0 12px;
     min-height: 42px;
+    text-align: center;
 }
 
 .teacher-details {
     list-style: none;
     border-top: 1px solid #e6e1d6;
-    padding: 9px 0 0;
+    padding: 10px 0 0;
     margin: 0 0 12px;
 }
 
 .teacher-details li {
     position: relative;
     padding-right: 22px;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     color: #69817e;
-    font-size: 13px;
+    font-size: 12.5px;
     line-height: 1.8;
 }
 
@@ -699,55 +679,9 @@ footer:not(.site-footer) .copyright {
     right: 0;
     top: 0;
     color: var(--tp-green);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: bold;
 }
-
-
-
-
-/* الملاحظة الذهبية */
-
-.teachers-note {
-    width: 100%;
-    min-height: 48px;
-    margin-top: 16px;
-    padding: 9px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #f4ecd7;
-    border: 1px solid #eee3c9;
-    border-radius: 12px;
-    color: #aa9365;
-}
-
-.teachers-note p {
-    flex: 1;
-    font-size: 11px;
-    line-height: 1.9;
-}
-
-.note-leaf {
-    font-size: 29px;
-    color: #b8b99d;
-}
-
-.note-info {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #b49a61;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-/* منطقة تقديم طلب الالتحاق */
 
 .teachers-cta {
     min-height: 120px;
@@ -811,330 +745,20 @@ footer:not(.site-footer) .copyright {
     transform: scaleX(-1);
 }
 
-
-
-/* ========================================
-   الشاشات المتوسطة
-======================================== */
-
-@media (max-width: 900px) {
-    .site-header {
-        justify-content: center;
-        text-align: center;
-    }
-
-    .navbar {
-        width: 100%;
-        gap: 5px;
-    }
-
-    .navbar a {
-        padding: 7px 9px;
-        font-size: 13px;
-    }
-
-    .hero {
-        padding: 45px 5%;
-    }
-
-    .teachers-section {
-        width: 90%;
-    }
-
-    .teacher-card {
-        padding: 17px;
-    }
-
-    .teacher-photo {
-        width: 75px;
-        height: 75px;
-        min-width: 75px;
-    }
-
-    .teacher-button {
-        width: 82%;
-    }
-
-    .request-page .container {
-        grid-template-columns: 1fr;
+/* التجاوب للشاشات المتوسطة والصغيرة */
+@media (max-width: 992px) {
+    .teachers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* ========================================
-   تنسيق الموبايل
-======================================== */
-
 @media (max-width: 650px) {
-    .site-header {
-        padding: 15px 10px;
-        gap: 12px;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .logo img {
-        width: 45px;
-        height: 45px;
-    }
-
-    .navbar {
-        gap: 5px;
-    }
-
-    .navbar a {
-        font-size: 12px;
-        padding: 6px 8px;
-    }
-
-    .hero {
-        padding: 35px 18px;
-        gap: 28px;
-    }
-
-    .hero-description {
-        font-size: 15px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .main-button,
-    .secondary-button {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .verse-card {
-        padding: 20px 15px;
-    }
-
-    /* صفحة عن الموقع */
-
-    .about-hero {
-        padding: 38px 18px;
-    }
-
-    .about-intro {
-        font-size: 16px;
-    }
-
-    .about-content {
-        width: calc(100% - 28px);
-        margin: 26px auto;
-        grid-template-columns: minmax(0, 1fr);
-        gap: 15px;
-    }
-
-    .about-card {
-        padding: 22px 18px;
-    }
-
-    .goal-card {
-        grid-column: auto;
-    }
-
-    .about-cta {
-        padding: 32px 16px 42px;
-    }
-
-    /* الفوتر الموحد على الموبايل */
-
-    .site-footer {
-        min-height: auto;
-        grid-template-columns: 1fr;
-        gap: 3px;
-        padding: 10px 8px;
-    }
-
-    .footer-side {
-        font-size: 10px;
-    }
-
-    .footer-brand strong {
-        font-size: 12px;
-    }
-
-    .footer-brand span {
-        font-size: 10px;
-    }
-
-    .footer-empty {
-        display: none;
-    }
-
-    /* الفوتر القديم على الموبايل */
-
-    footer:not(.site-footer) {
-        padding: 12px 10px;
-    }
-
-    /* صفحة المحفّظين */
-
-    .teachers-hero {
-        min-height: 235px;
-        padding: 30px 16px;
-    }
-
-    .teachers-hero h1 {
-        font-size: 29px;
-    }
-
-    .teachers-hero-content > p:not(.teachers-label) {
-        font-size: 13px;
-    }
-
-    .teachers-ornament span {
-        width: 55px;
-    }
-
-    .teachers-section {
-        width: calc(100% - 24px);
-        margin: 20px auto;
-    }
-
-    .teachers-heading h2 {
-        font-size: 22px;
-    }
-
     .teachers-grid {
         grid-template-columns: minmax(0, 1fr);
         gap: 13px;
     }
-
     .teacher-card {
-        min-height: 260px;
+        min-height: 240px;
         padding: 18px;
     }
-
-    .teacher-photo {
-        width: 76px;
-        height: 76px;
-        min-width: 76px;
-    }
-
-    .teacher-info h3 {
-        font-size: 18px;
-    }
-
-    .teacher-button {
-        width: 75%;
-    }
-
-    .teachers-note {
-        padding: 10px;
-        gap: 7px;
-    }
-
-    .teachers-note p {
-        font-size: 10px;
-    }
-
-    .note-leaf {
-        font-size: 22px;
-    }
-
-    .cta-leaves {
-        font-size: 65px;
-    }
-
-    .navbar a {
-        font-size: 11px;
-        padding: 6px 7px;
-    }
-
-    /* صفحة الالتحاق */
-
-    .request-page .hero {
-        padding: 35px 16px;
-    }
-
-    .request-page .hero h1 {
-        font-size: 29px;
-    }
-
-    .request-page .hero p {
-        font-size: 13px;
-    }
-
-    .request-page .container {
-        margin: 20px auto;
-        padding: 0 12px;
-        gap: 15px;
-    }
-
-    .request-page .form-section {
-        padding: 17px 14px;
-    }
-
-    .request-page .form-grid-2 {
-        grid-template-columns: 1fr;
-    }
-
-    .request-page .cards-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .request-page .methods-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .request-page .section-desc {
-        margin-right: 0;
-    }
-
-    .request-page .sidebar-card {
-        padding: 16px;
-    }
-
-    .request-page .divider-icon::before,
-    .request-page .divider-icon::after {
-        width: 45px;
-    }
 }
-
-/* ========================================
-   شاشات الموبايل الصغيرة
-======================================== */
-
-@media (max-width: 380px) {
-    .request-page .form-section {
-        padding: 14px 11px;
-    }
-
-    .request-page .section-title {
-        font-size: 16px;
-    }
-
-    .request-page .radio-options {
-        gap: 8px;
-    }
-
-    .request-page .choice-card {
-        padding: 12px;
-    }
-
-    .teacher-profile {
-        gap: 10px;
-    }
-
-    .teacher-card {
-        padding: 14px;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
