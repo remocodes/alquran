@@ -153,7 +153,7 @@
         </div>
       </section>
 
-      <!-- اختيار الباقة المناسبة (تشمل الحلقات الجماعية والتسميع الفردي) -->
+      <!-- اختيار الباقة المناسبة (قائمة منسدلة مخصصة Custom Dropdown) -->
       <section class="form-card">
         <div class="section-heading">
           <div>
@@ -164,56 +164,59 @@
         </div>
 
         <div class="question-block">
-          <div class="choice-grid three-columns">
-            <label class="choice-card goal-card">
-              <input type="radio" name="selectedPackage" value="الباقة الأساسية (150 جنيه/شهرياً - جماعي)" required>
-              <span class="choice-icon"><i class="fa-solid fa-star"></i></span>
-              <span class="choice-content">
-                <strong>الباقة الأساسية (جماعي)</strong>
-                <small>150 جنيه شهريًا - 3 حصص أسبوعياً</small>
-              </span>
-              <i class="fa-solid fa-circle-check selected-icon"></i>
-            </label>
+          <div class="custom-dropdown-container" id="customDropdown">
+            <div class="dropdown-selected" id="dropdownSelected">
+              <span id="selectedPlaceholder">اختر الباقة المناسبة من القائمة...</span>
+              <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </div>
+            
+            <div class="dropdown-menu" id="dropdownMenu">
+              <!-- الحلقات الجماعية -->
+              <div class="dropdown-category-title">الحلقات الجماعية</div>
+              
+              <label class="dropdown-item">
+                <input type="radio" name="selectedPackage" value="الباقة الأساسية (150 جنيه/شهرياً - جماعي)" required>
+                <div class="dropdown-item-content">
+                  <strong>الباقة الأساسية (جماعي)</strong>
+                  <small>150 جنيه شهريًا - 3 حصص أسبوعياً</small>
+                </div>
+              </label>
 
-            <label class="choice-card goal-card">
-              <input type="radio" name="selectedPackage" value="الباقة المتوسطة (200 جنيه/شهرياً - جماعي)">
-              <span class="choice-icon"><i class="fa-solid fa-award"></i></span>
-              <span class="choice-content">
-                <strong>الباقة المتوسطة (جماعي)</strong>
-                <small>200 جنيه شهريًا - 4 حصص أسبوعياً</small>
-              </span>
-              <i class="fa-solid fa-circle-check selected-icon"></i>
-            </label>
+              <label class="dropdown-item">
+                <input type="radio" name="selectedPackage" value="الباقة المتوسطة (200 جنيه/شهرياً - جماعي)">
+                <div class="dropdown-item-content">
+                  <strong>الباقة المتوسطة (جماعي)</strong>
+                  <small>200 جنيه شهريًا - 4 حصص أسبوعياً</small>
+                </div>
+              </label>
 
-            <label class="choice-card goal-card">
-              <input type="radio" name="selectedPackage" value="الباقة المكثفة (250 جنيه/شهرياً - جماعي)">
-              <span class="choice-icon"><i class="fa-solid fa-gem"></i></span>
-              <span class="choice-content">
-                <strong>الباقة المكثفة (جماعي)</strong>
-                <small>250 جنيه شهريًا - 5 حصص أسبوعياً</small>
-              </span>
-              <i class="fa-solid fa-circle-check selected-icon"></i>
-            </label>
+              <label class="dropdown-item">
+                <input type="radio" name="selectedPackage" value="الباقة المكثفة (250 جنيه/شهرياً - جماعي)">
+                <div class="dropdown-item-content">
+                  <strong>الباقة المكثفة (جماعي)</strong>
+                  <small>250 جنيه شهريًا - 5 حصص أسبوعياً</small>
+                </div>
+              </label>
 
-            <label class="choice-card goal-card">
-              <input type="radio" name="selectedPackage" value="التسميع الفردي للبنات (200 جنيه/شهرياً)">
-              <span class="choice-icon"><i class="fa-solid fa-female"></i></span>
-              <span class="choice-content">
-                <strong>التسميع الفردي للبنات</strong>
-                <small>200 جنيه شهريًا - حصتان أسبوعياً (نصف ساعة)</small>
-              </span>
-              <i class="fa-solid fa-circle-check selected-icon"></i>
-            </label>
+              <!-- التسميع الفردي -->
+              <div class="dropdown-category-title">التسميع الفردي</div>
 
-            <label class="choice-card goal-card">
-              <input type="radio" name="selectedPackage" value="التسميع الفردي للأولاد (200 جنيه/شهرياً)">
-              <span class="choice-icon"><i class="fa-solid fa-male"></i></span>
-              <span class="choice-content">
-                <strong>التسميع الفردي للأولاد</strong>
-                <small>200 جنيه شهريًا - حصتان أسبوعياً (نصف ساعة)</small>
-              </span>
-              <i class="fa-solid fa-circle-check selected-icon"></i>
-            </label>
+              <label class="dropdown-item">
+                <input type="radio" name="selectedPackage" value="التسميع الفردي للبنات (200 جنيه/شهرياً)">
+                <div class="dropdown-item-content">
+                  <strong>التسميع الفردي للبنات</strong>
+                  <small>200 جنيه شهريًا - حصتان أسبوعياً (نصف ساعة)</small>
+                </div>
+              </label>
+
+              <label class="dropdown-item">
+                <input type="radio" name="selectedPackage" value="التسميع الفردي للأولاد (200 جنيه/شهرياً)">
+                <div class="dropdown-item-content">
+                  <strong>التسميع الفردي للأولاد</strong>
+                  <small>200 جنيه شهريًا - حصتان أسبوعياً (نصف ساعة)</small>
+                </div>
+              </label>
+            </div>
           </div>
         </div>
       </section>

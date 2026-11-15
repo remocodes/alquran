@@ -7,6 +7,45 @@ if (requestForm) {
   requestForm.addEventListener("submit", handleRequestSubmit);
 }
 
+// تفاعل القائمة المنسدلة المخصصة (Custom Dropdown)
+document.addEventListener("DOMContentLoaded", () => {
+  const customDropdown = document.getElementById("customDropdown");
+  const dropdownSelected = document.getElementById("dropdownSelected");
+  const selectedPlaceholder = document.getElementById("selectedPlaceholder");
+
+  if (customDropdown && dropdownSelected) {
+    dropdownSelected.addEventListener("click", (e) => {
+      e.stopPropagation();
+      customDropdown.classList.toggle("active");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!customDropdown.contains(e.target)) {
+        customDropdown.classList.remove("active");
+      }
+    });
+
+    // تحديث النص عند اختيار باقة
+    const packageRadios = customDropdown.querySelectorAll('input[name="selectedPackage"]');
+    packageRadios.forEach((radio) => {
+      radio.addEventListener("change", () => {
+        if (radio.checked) {
+          const itemContent = radio.closest(".dropdown-item").querySelector(".dropdown-item-content strong");
+          if (itemContent && selectedPlaceholder) {
+            selectedPlaceholder.textContent = itemContent.textContent;
+            selectedPlaceholder.style.color = "var(--dark-green)";
+          }
+          customDropdown.classList.remove("active");
+          
+          // إزالة تنبيه الخطأ للباقة إن وجد
+          const questionBlock = customDropdown.closest(".question-block");
+          if (questionBlock) clearError(questionBlock);
+        }
+      });
+    });
+  }
+});
+
 // إضافة رسالة خطأ أسفل العنصر المطلوب.
 function showError(target, message, type = "field") {
   clearError(target);
@@ -93,7 +132,7 @@ function validateMultiple(selector, container, message) {
   return true;
 }
 
-// تحديث المظهر عند الاختيار.
+// تحديث المظهر عند الاختيار للأزرار العادية.
 document
   .querySelectorAll(".choice-card, .day-option")
   .forEach((card) => {
@@ -119,11 +158,6 @@ document
       if (input.name === "requestType") {
         const reqEl = requestForm.querySelector('input[name="requestType"]');
         if (reqEl) clearError(reqEl.closest(".question-block"));
-      }
-
-      if (input.name === "selectedPackage") {
-        const pkgEl = requestForm.querySelector('input[name="selectedPackage"]');
-        if (pkgEl) clearError(pkgEl.closest(".question-block"));
       }
 
       if (input.name === "followMethod") {
@@ -254,15 +288,15 @@ function handleRequestSubmit(event) {
     );
   }
 
-  // 4.5. اختيار الباقة: اختيار واحد مطلوب.
+  // 4.5. اختيار الباقة من القائمة المنسدلة: اختيار واحد مطلوب.
   const pkgRadio = requestForm.querySelector('input[name="selectedPackage"]');
   if (pkgRadio) {
-    const packageContainer = pkgRadio.closest(".question-block");
+    const packageContainer = document.getElementById("customDropdown");
     check(
       validateGroup(
         'input[name="selectedPackage"]:checked',
         packageContainer,
-        "من فضلك اختر الباقة المناسبة."
+        "من فضلك اختر الباقة المناسبة من القائمة."
       ),
       packageContainer
     );
@@ -330,9 +364,10 @@ function handleRequestSubmit(event) {
     });
 
     if (
-      firstInvalidElement instanceof HTMLInputElement
+      firstInvalidElement instanceof HTMLInputElement ||
+      firstInvalidElement instanceof HTMLElement
     ) {
-      firstInvalidElement.focus({ preventScroll: true });
+      firstInvalidElement.focus?.({ preventScroll: true });
     }
 
     return;

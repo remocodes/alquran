@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const allCards = document.querySelectorAll('.card');
+    // استهداف كروت الباقات فقط (.pricing-card, .ind-card) لتجنب التأثير على الكروت العلوية من نحن/رسالتنا
+    const packageCards = document.querySelectorAll('.pricing-card, .ind-card');
 
-    // إزالة أي تحديد افتراضي عند فتح الصفحة للتأكد من عدم اختيار أي باقة مسبقاً
-    allCards.forEach(card => {
+    packageCards.forEach(card => {
         card.classList.remove('selected');
         card.addEventListener('click', function () {
             if (this.classList.contains('selected')) {
                 this.classList.remove('selected');
             } else {
-                allCards.forEach(c => c.classList.remove('selected'));
+                packageCards.forEach(c => c.classList.remove('selected'));
                 this.classList.add('selected');
             }
         });
