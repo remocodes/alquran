@@ -1,6 +1,6 @@
 
 // رابط واتساب التجريبي
-const CONTACT_WHATSAPP_URL = "https://wa.me/201065155293";
+const CONTACT_WHATSAPP_URL = "https://wa.me/201115328404";
 
 // عناصر الفورم
 const contactForm = document.getElementById("contactForm");
